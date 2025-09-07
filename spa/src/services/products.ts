@@ -28,5 +28,3 @@ export async function fetchProductsPreview(country?: string): Promise<Array<{ na
     return true;
   }).slice(0, 20);
 }
-
-

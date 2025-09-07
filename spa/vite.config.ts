@@ -26,7 +26,11 @@ export default defineConfig({
     '**/*.md'
   ],
   server: {
+    host: '0.0.0.0',
     port: 5173,
+    hmr: {
+      host: 'localhost'
+    },
     proxy: {
       '/api': 'http://backend:8000',
       '/static': 'http://backend:8000'

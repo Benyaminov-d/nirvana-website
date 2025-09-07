@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { fetchProductsPreview } from '@services/products';
 import TickerRibbons from '@components/TickerRibbons';
 import { useCompliance } from '../context/ComplianceContext';
@@ -95,7 +95,7 @@ export default function HomePage() {
     return regionToCountryMap[state.region] || 'US';
   }, [state.accepted, state.region]);
   useEffect(() => {
-    fetchProductsPreview(tickerCountry).then((res)=>{
+    fetchProductsPreview(tickerCountry).then((res: Array<{name?:string; symbol?:string; compass_score?:number}>)=>{
       setItems(res);
     }).finally(()=> setLoading(false));
   }, [tickerCountry]);
@@ -305,10 +305,10 @@ export default function HomePage() {
                   const displayName = placeholder.names[idx] ?? 'Please subscribe to see products';
                   const cs = placeholder.scores[idx] ?? null;
                   return (
-                    <>
+                    <React.Fragment key={idx}>
                       <div className="text-gray-200 truncate" style={{ filter: 'blur(4px)', userSelect: 'none' }}>{displayName}</div>
                       <div className="justify-self-end nv-score nv-score--sm" style={{ filter: 'blur(4px)' }}>{cs ?? '-'}</div>
-                    </>
+                    </React.Fragment>
                   );
                 })}
               </div>
@@ -466,10 +466,10 @@ export default function HomePage() {
                     const displayName = placeholder.names[idx] ?? 'Please subscribe to see products';
                     const cs = placeholder.scores[idx] ?? null;
                     return (
-                      <>
+                      <React.Fragment key={idx}>
                         <div className="text-gray-200 truncate" style={{ filter: 'blur(4px)', userSelect: 'none' }}>{displayName}</div>
                         <div className="justify-self-end nv-score nv-score--sm" style={{ filter: 'blur(4px)' }}>{cs ?? '-'}</div>
-                      </>
+                      </React.Fragment>
                     );
                   })}
                 </div>
