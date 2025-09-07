@@ -1,0 +1,30 @@
+services:
+  website:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: nirvana_website
+    ports:
+      - "3000:80"
+    environment:
+      - VITE_API_BASE=${VITE_API_BASE:-http://localhost:8000}
+    env_file:
+      - .env
+
+  website-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    container_name: nirvana_website_dev
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./spa:/app/spa
+      - nirvana_website_node_modules_cache:/app/spa/node_modules
+    environment:
+      - VITE_API_BASE=${VITE_API_BASE:-http://localhost:8000}
+    env_file:
+      - .env
+
+volumes:
+  nirvana_website_node_modules_cache:
