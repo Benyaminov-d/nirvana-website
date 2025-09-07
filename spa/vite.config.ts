@@ -32,8 +32,8 @@ export default defineConfig({
       host: 'localhost'
     },
     proxy: {
-      '/api': 'http://backend:8000',
-      '/static': 'http://backend:8000'
+      '/api': 'http://backend:8000'
+      // Удалена перенаправление /static на бэкенд, чтобы Vite сам обрабатывал эти запросы
     }
   },
   resolve: {
