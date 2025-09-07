@@ -4,12 +4,22 @@ import { useCompliance, type Region } from '../context/ComplianceContext';
 const BASE_REGION_OPTIONS: { label: string; value: Region }[] = [
   { label: 'United States', value: 'US' },
   { label: 'Canada', value: 'CA' },
-  { label: 'Switzerland', value: 'CH' },
-  { label: 'Japan', value: 'JP' },
-  { label: 'EU/EEA', value: 'EU' },
-  { label: 'China', value: 'CN' },
   { label: 'United Kingdom', value: 'UK' },
+  { label: 'EU/EEA', value: 'EU' },
   { label: 'India', value: 'IN' },
+  { label: 'Japan', value: 'JP' },
+  { label: 'Mainland China', value: 'CN' },
+  { label: 'Hong Kong', value: 'HK' },
+  { label: 'Australia', value: 'AU' },
+  { label: 'Brazil', value: 'BR' },
+  { label: 'Mexico', value: 'MX' },
+  { label: 'South Korea', value: 'KR' },
+  { label: 'Taiwan', value: 'TW' },
+  { label: 'Singapore', value: 'SG' },
+  { label: 'United Arab Emirates', value: 'AE' },
+  { label: 'Saudi Arabia', value: 'SA' },
+  { label: 'South Africa', value: 'ZA' },
+  { label: 'Indonesia', value: 'ID' }
 ];
 const REGION_OPTIONS: { label: string; value: Region }[] = [
   ...[...BASE_REGION_OPTIONS].sort((a, b) => a.label.localeCompare(b.label)),
