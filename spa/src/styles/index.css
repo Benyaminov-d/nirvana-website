@@ -41,7 +41,7 @@ body {
 }
 
 /* Parity with legacy index.html styles */
-:root { --disc-h: 0px; --rib-h: 68px; }
+:root { --disc-h: 0px; --rib-h: 84px; }
 html, body { margin: 0; padding: 0; }
 
 /* Liquid glass */

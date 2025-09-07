@@ -28,3 +28,14 @@ export async function fetchProductsPreview(country?: string): Promise<Array<{ na
     return true;
   }).slice(0, 20);
 }
+
+export async function fetchTickerData(country: string, mode: 'five_stars' | 'cvar95' | 'cvar99' = 'five_stars'): Promise<Array<{ symbol: string; as_of?: string; cvar95?: number; cvar99?: number }>> {
+  const params = new URLSearchParams({
+    country,
+    mode,
+    limit: '20'
+  });
+  
+  const response = await getJSON(`/api/ticker/feed?${params.toString()}`);
+  return response.items || [];
+}

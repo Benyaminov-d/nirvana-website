@@ -6,7 +6,7 @@ const BASE_REGION_OPTIONS: { label: string; value: Region }[] = [
   { label: 'Canada', value: 'CA' },
   { label: 'Switzerland', value: 'CH' },
   { label: 'Japan', value: 'JP' },
-  { label: 'Europe', value: 'EU' },
+  { label: 'EU/EEA', value: 'EU' },
   { label: 'China', value: 'CN' },
   { label: 'United Kingdom', value: 'UK' },
   { label: 'India', value: 'IN' },

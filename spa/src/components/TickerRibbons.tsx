@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { useCompliance } from '../context/ComplianceContext';
+import { fetchTickerData } from '../services/products';
 
 type FeedItem = { symbol: string; as_of?: string; cvar95?: number; cvar99?: number };
 
@@ -43,14 +44,18 @@ export default function TickerRibbons({ size = 14, mode = 'cvar95', country = 'U
   const { state } = useCompliance();
   const [feed, setFeed] = useState<FeedItem[]>([]);
   const [asOf, setAsOf] = useState<string>('');
-  const innerRef = useRef<HTMLDivElement>(null);
-  const outerRef = useRef<HTMLDivElement>(null);
+  const [titleSuffix, setTitleSuffix] = useState<string>('');
   const [scrollPos, setScrollPos] = useState(0);
   const [isReady, setIsReady] = useState(false);
   const [isDragging, setIsDragging] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const [dragStart, setDragStart] = useState({ x: 0, scrollPos: 0 });
   const animationRef = useRef<number | null>(null);
+
+  const outerRef = useRef<HTMLDivElement | null>(null);
+  const innerRef = useRef<HTMLDivElement | null>(null);
+  const stateRef = useRef<{ width: number; offset: number; paused: boolean; dragging: boolean; startX: number; startOffset: number }>({ width: 1, offset: 0, paused: false, dragging: false, startX: 0, startOffset: 0 });
+  const SEQ = 3;
 
   // Static placeholder data for website
   const placeholderFeed: FeedItem[] = [
@@ -62,11 +67,63 @@ export default function TickerRibbons({ size = 14, mode = 'cvar95', country = 'U
   ];
 
   useEffect(() => {
-    // Use static data for website
-    setFeed(placeholderFeed);
-    setAsOf('06 Sep 2025');
-    setIsReady(true);
+    const loadTickerData = async () => {
+      try {
+        setIsReady(false);
+        const response = await fetch(`/api/ticker/feed?country=${country}&mode=${mode}&limit=20`);
+        const data = await response.json();
+        
+        if (data.success) {
+          setFeed(data.items || []);
+          setAsOf(data.items && data.items.length > 0 ? data.items[0].as_of || '06 Sep 2025' : '06 Sep 2025');
+          setTitleSuffix(data.title_suffix || '');
+          
+          // Show message if no data
+          if (!data.items || data.items.length === 0) {
+            console.warn('No ticker data available:', data.message || 'No items returned');
+          }
+        } else {
+          throw new Error('Invalid response from ticker API');
+        }
+        setIsReady(true);
+      } catch (error) {
+        console.error('Failed to load ticker data:', error);
+        // Fallback to placeholder data
+        setFeed(placeholderFeed);
+        setAsOf('06 Sep 2025');
+        setTitleSuffix('');
+        setIsReady(true);
+      }
+    };
+    
+    loadTickerData();
   }, [mode, country]);
+
+  // Update CSS custom property --rib-h when component height changes
+  useEffect(() => {
+    const updateHeight = () => {
+      if (outerRef.current) {
+        const height = outerRef.current.offsetHeight;
+        document.documentElement.style.setProperty('--rib-h', `${height}px`);
+      }
+    };
+
+    // Initial measurement
+    updateHeight();
+
+    // Use ResizeObserver for accurate height tracking
+    let resizeObserver: ResizeObserver | null = null;
+    if (outerRef.current && window.ResizeObserver) {
+      resizeObserver = new ResizeObserver(updateHeight);
+      resizeObserver.observe(outerRef.current);
+    }
+
+    return () => {
+      if (resizeObserver) {
+        resizeObserver.disconnect();
+      }
+    };
+  }, [isReady]); // Re-run when component is ready
 
   const keyField = mode === 'cvar99' ? 'cvar99' : 'cvar95';
   
@@ -76,11 +133,16 @@ export default function TickerRibbons({ size = 14, mode = 'cvar95', country = 'U
       return mode === 'cvar99' ? 'CVaR 99%' : 'CVaR 95%';
     }
     
+    // Use API-provided title suffix if available
+    if (titleSuffix) {
+      return `EXPECTED LOSS: ${titleSuffix}`;
+    }
+    
+    // Fallback to hardcoded titles
     switch (country) {
       case 'US':
         return 'EXPECTED LOSS: MORNINGSTAR GOLD MEDALIST + 5-STAR RATED US MUTUAL FUNDS (99-CVAR, ANNUALISED)';
       case 'UK':
-        // For UK, we'll use the fallback text since we don't have product count logic
         return 'EXPECTED LOSS: MORNINGSTAR GOLD MEDALIST + 5-STAR RATED UK and US ETF and MUTUAL FUNDS (99-CVAR, ANNUALISED) Aug 22, 2025';
       default:
         return 'EXPECTED LOSS: MORNINGSTAR GOLD MEDALIST + 5-STAR RATED UK and US ETF and MUTUAL FUNDS (99-CVAR, ANNUALISED) Aug 22, 2025';
@@ -123,12 +185,10 @@ export default function TickerRibbons({ size = 14, mode = 'cvar95', country = 'U
       animationRef.current = requestAnimationFrame(animate);
     };
 
-    const timer = setTimeout(() => {
-      animationRef.current = requestAnimationFrame(animate);
-    }, 1000);
+    // Start animation immediately
+    animationRef.current = requestAnimationFrame(animate);
 
     return () => {
-      clearTimeout(timer);
       if (animationRef.current) cancelAnimationFrame(animationRef.current);
     };
   }, [isReady, feed.length, isDragging, isHovered]);

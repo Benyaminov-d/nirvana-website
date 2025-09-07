@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
-import { fetchProductsPreview } from '@services/products';
-import TickerRibbons from '@components/TickerRibbons';
+import { fetchProductsPreview } from '../services/products';
+import TickerRibbons from '../components/TickerRibbons';
 import { useCompliance } from '../context/ComplianceContext';
 
 // Forest Image Slider Component
@@ -9,42 +9,42 @@ function ForestSlider() {
   
   const forestImages = [
     { src: new URL('../assets/forests/forests_1.jpg', import.meta.url).toString(), alt: 'Forest conservation 1' },
-    // { src: new URL('../assets/forests/forests_2.jpg', import.meta.url).toString(), alt: 'Forest conservation 2' },
-    // { src: new URL('../assets/forests/forests_3.jpg', import.meta.url).toString(), alt: 'Forest conservation 3' }
+    { src: new URL('../assets/forests/forests_2.jpg', import.meta.url).toString(), alt: 'Forest conservation 2' },
+    { src: new URL('../assets/forests/forests_3.jpg', import.meta.url).toString(), alt: 'Forest conservation 3' }
   ];
 
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImage((prev) => (prev + 1) % forestImages.length);
-    }, 3000); // Change image every 3 seconds
+    }, 6000); // Change image every 3 seconds
 
     return () => clearInterval(interval);
   }, [forestImages.length]);
 
   return (
-    <div className="max-w-[350px] mx-auto">
-      <div className="glass max-w-[250px] mx-auto nv-glass--inner-hairline border border-white/10 rounded-2xl overflow-hidden relative">
-        <img 
+    <div className="max-w-[450px] mx-auto">
+      <div className="glass max-w-[300px] mx-auto nv-glass--inner-hairline border border-white/10 rounded-2xl overflow-hidden relative">
+        {/* <img 
           key={0}
           src={forestImages[0].src} 
           alt={forestImages[0].alt}
           className={`w-full h-auto mx-auto object-cover transition-opacity duration-1000`}
-        />
-        {/* <div className="relative w-full h-auto">
+        /> */}
+        <div className="relative w-full h-auto">
           {forestImages.map((image, index) => (
             <img 
               key={index}
               src={image.src} 
               alt={image.alt}
-              className={`w-full h-auto max-w-[250px] mx-auto object-cover transition-opacity duration-1000 ${
+              className={`w-full h-auto max-w-[300px] mx-auto object-cover transition-opacity duration-1000 ${
                 index === currentImage ? 'opacity-100' : 'opacity-0 absolute inset-0'
               }`}
             />
           ))}
-        </div> */}
+        </div>
         
         {/* Slider indicators */}
-        {/* <div className="absolute bottom-3 left-1/2 transform -translate-x-1/2 flex gap-2">
+        <div className="absolute bottom-3 left-1/2 transform -translate-x-1/2 flex gap-2">
           {forestImages.map((_, index) => (
             <button
               key={index}
@@ -55,9 +55,9 @@ function ForestSlider() {
               aria-label={`Go to image ${index + 1}`}
             />
           ))}
-        </div> */}
+        </div>
       </div>
-      <p className="mt-2 text-sm text-gray-200 text-center">
+      <p className="mt-2 text-md text-gray-200 text-center">
         Nirvana dedicates 10% of total consolidated revenues to protecting all forests, restoring ecosystems, safeguarding animals, and improving the human condition.
       </p>
     </div>
@@ -99,6 +99,7 @@ export default function HomePage() {
       setItems(res);
     }).finally(()=> setLoading(false));
   }, [tickerCountry]);
+
 
   // Placeholder data for Home page (no real products)
   const placeholder = useMemo(() => {
@@ -148,13 +149,14 @@ export default function HomePage() {
   }, [items.length]);
 
   return (
-    <div className="relative max-w-[1450px] mx-auto">
+    <div className="relative max-w-full mx-auto">
+    {/* <div className="relative max-w-[1450px] mx-auto"> */}
       {/* Full-viewport-width ticker (ignores main padding) */}
-      <div style={{ width: '100vw', marginLeft: 'calc(50% - 50vw)' }}>
+      <div className="mt-2 mb-2" style={{ width: '100vw', marginLeft: 'calc(50% - 50vw)' }}>
         <TickerRibbons size={20} mode="five_stars" country={tickerCountry} />
       </div>
       <div className="w-full">
-        <div className="w-full px-3 md:px-6 grid grid-cols-1 md:grid-cols-12 gap-4 pt-3 md:pt-10 pb-8 items-stretch md:overflow-hidden md:h-[calc(100dvh-var(--rib-h,68px))]">
+        <div className="w-full px-3 md:px-6 grid grid-cols-1 md:grid-cols-12 gap-4 pt-3 md:pt-2 pb-8 items-stretch md:overflow-hidden md:h-[calc(100dvh-var(--rib-h,84px))]">
           {/* Mobile-only WSJ quote */}
           <div className="md:hidden col-span-1 text-center px-2 mt-24 mb-6">
             <div className="trajan-text text-2xl text-white">
@@ -315,32 +317,32 @@ export default function HomePage() {
               {loading && <div className="text-xs text-gray-400 mt-2">Loading…</div>}
             </div>
           </div>
+          
           {/* Left column */}
-          <div className="md:col-span-3 hidden md:flex pr-6 flex-col gap-4 pt-0 h-full justify-center mt-4">
-            <div className="flex flex-col gap-4">
-            <div className="trajan-text text-lg text-white">
-              <a href="https://www.wsj.com/finance/investing/financial-advice-investments-personalization-fea73e95" className="hover:underline hover:decoration-[#ff7f50] text-white" target="_blank" rel="noopener noreferrer">
-                <div style={{ color: '#ff7f50' }}>
-                  <p>"Why So Many People Get Financial Advice That Is Wrong for Them"</p>
-                  <div className="mt-2">
-                    <span className="underline underline-offset-2 decoration-[#ff7f50]">- Wall Street Journal,</span>
-                    <span> 30th July 2025</span>
-                  </div>
+          <div className="md:col-span-3 items-end hidden md:flex pr-6 flex-col gap-4 pt-0 h-full mt-4">
+            <div className="flex flex-col max-w-[400px] space-y-4 gap-4 h-full">
+              <div className="flex flex-col justify-center gap-5 h-full">
+                <div className="trajan-text text-lg text-white">
+                  <a href="https://www.wsj.com/finance/investing/financial-advice-investments-personalization-fea73e95" className="hover:underline hover:decoration-[#ff7f50] text-white" target="_blank" rel="noopener noreferrer">
+                    <div style={{ color: '#ff7f50' }}>
+                      <p>"Why So Many People Get Financial Advice That Is Wrong for Them"</p>
+                      <div className="mt-2">
+                        <span className="underline underline-offset-2 decoration-[#ff7f50]">- Wall Street Journal,</span>
+                        <span> 30th July 2025</span>
+                      </div>
+                    </div>
+                  </a>
                 </div>
-              </a>
+                <div className="text-md text-white system-ui" style={{ fontWeight: 300, color: '#ff7f50' }}>
+                  <p>Industry "risk" and fund-rating labels hide the true size of potential losses.</p>
+                  <p className='mt-2'>Nearly 75% of people worldwide simply want to know the bottom line: How much could I lose if things go wrong? We are here for you.</p>
+                  <p className='mt-2'>Nirvana is the only global retail-facing service built around loss aversion. By far the most dominant investor behavior on the planet.</p>
+                </div>
+              </div>
             </div>
-              <div className="text-md text-white system-ui" style={{ fontWeight: 300, color: '#ff7f50' }}>
-                <p>Industry "risk" and fund-rating labels hide the true size of potential losses.</p>
-                <p className='mt-2'>Nearly 75% of people worldwide simply want to know the bottom line: How much could I lose if things go wrong? We are here for you.</p>
-                <p className='mt-2'>Nirvana is the only global retail-facing service built around loss aversion. By far the most dominant investor behavior on the planet.</p>
-            </div>
-              <div className="flex flex-col gap-3 text-md">
-              {/* <a href="/about" className="glass nv-glass--inner-hairline border border-white/10 rounded-lg px-3 py-2 inline-block text-gray-200 hover:text-white">About us</a> */}
-              <a href="/member-eula" role="button" className="glass nv-glass--inner-hairline border border-white/10 rounded-lg px-3 py-2 inline-block text-gray-200 hover:text-white">Member EULA</a>
-              {/* <a href="/what-is-compass-score" role="button" className="glass nv-glass--inner-hairline border border-white/10 rounded-lg px-3 py-2 inline-block text-gray-200 hover:text-white">Compass Score</a>
-              <a href="/why-people-use-nirvana" role="button" className="glass nv-glass--inner-hairline border border-white/10 rounded-lg px-3 py-2 inline-block text-gray-200 hover:text-white">Why do we exist</a> */}
-            </div>
-              <div className="mt-0 mx-auto">
+            <div className="flex flex-col max-w-[400px] w-full">
+              <div className="flex flex-col max-w-[400px] gap-4">
+                <a href="/member-eula" role="button" className="glass nv-glass--inner-hairline border border-white/10 rounded-lg px-3 py-2 inline-block text-gray-200 hover:text-white">Member EULA</a>
                 <img src={new URL('../assets/NirvanaFireFlyLogo.png', import.meta.url).toString()} alt="Nirvana" className="h-auto mx-auto max-h-40 w-auto object-contain" />
               </div>
             </div>
@@ -349,13 +351,18 @@ export default function HomePage() {
           {/* Center chat column */}
           <div className="hidden md:grid md:grid-rows-[5fr_7fr] gap-3 md:col-span-5 md:h-full md:min-h-0">
             {/* Desktop only buttons - hidden on mobile */}
-            <div className="hidden md:flex flex-row row-span-1 flex-wrap gap-10 w-full justify-center content-center">
+            <div className="hidden md:flex flex-row row-span-1 flex-wrap gap-8 w-full justify-center content-center">
               <a href="/why-people-use-nirvana" role="button" className="glass text-lg trajan-text nv-glass--inner-hairline border border-white/10 rounded-lg px-4 py-2 inline-block whitespace-nowrap h-auto self-start text-white hover:text-gray-200 text-center">Why do we exist</a>
               <a href="/what-is-compass-score" role="button" className="glass text-lg trajan-text nv-glass--inner-hairline border border-white/10 rounded-lg px-4 py-2 inline-block whitespace-nowrap h-auto self-start text-white hover:text-gray-200 text-center">The Compass Score</a>
               <a href="/about" role="button" className="glass text-lg trajan-text nv-glass--inner-hairline border border-white/10 rounded-lg px-4 py-2 inline-block whitespace-nowrap h-auto self-start text-white hover:text-gray-200 text-center">About us</a>
               <a href="/trust-code-programme" role="button" className="glass text-lg trajan-text nv-glass--inner-hairline border border-white/10 rounded-lg px-4 py-2 inline-block whitespace-nowrap h-auto self-start text-white hover:text-gray-200 text-center">Trust Code Programme</a>
             </div>
-            <div className="glass mt-12 md:mt-0 bg-black/10 md:row-span-1 w-full md:h-full md:min-h-0 justify-start nv-glass--inner-hairline early-form px-4 py-6 border border-white/10 rounded-2xl flex flex-col md:overflow-hidden">
+            <div className="glass mt-12 md:mt-0 
+                            bg-black/10 md:row-span-1 w-full 
+                            md:h-full md:min-h-0 justify-start 
+                            nv-glass--inner-hairline early-form 
+                            px-4 py-6 border border-white/10 
+                            rounded-2xl flex flex-col md:overflow-hidden">
               <div className="flex gap-2 mb-3 items-start">
                 <p className="text-white !text-4xl trajan-text">Proximity</p>
                 <p className="text-white !text-md trajan-text relative right-1 bottom-1">Search</p>
@@ -443,7 +450,7 @@ export default function HomePage() {
           </div>
 
           {/* Right scores column (stable height); on mobile goes after chat */}
-          <div className="hidden md:grid md:grid-rows-[5fr_7fr] gap-5 md:col-span-4 md:h-full md:min-h-0">
+          <div className="hidden max-w-[450px] md:grid md:grid-rows-[5fr_7fr] gap-5 md:col-span-4 md:h-full md:min-h-0">
             <div className='md:row-span-1 flex items-center justify-center'>
               <ForestSlider />
             </div>

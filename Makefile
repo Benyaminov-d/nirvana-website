@@ -9,7 +9,7 @@ help:
 	@echo "======================================"
 	@echo "Available targets:"
 	@echo "  setup       - Setup development environment"
-	@echo "  start-dev   - Start development server (access via nginx)"
+	@echo "  start-dev   - Start development server with hot reloading (http://localhost:5173)"
 	@echo "  start-prod  - Start production server (access via nginx)"
 	@echo "  build       - Build production assets"
 	@echo "  stop        - Stop all services"
@@ -42,10 +42,12 @@ install:
 
 # Start development website (access through nginx only)
 start-dev:
-	@echo "=== Starting Development Website ==="
+	@echo "=== Starting Development Website with Hot Reloading ==="
 	@docker compose up -d website-dev
-	@echo "Development server started in nirvana_network:"
+	@echo "Development server started with hot reloading:"
 	@echo "  - nirvana_website_dev (Vite dev server)"
+	@echo "  - Access at: http://localhost:5173"
+	@echo "  - Changes will be automatically reflected in the browser"
 	@echo ""
 	@echo "Access through nginx reverse proxy:"
 	@echo "  - Start nginx: cd ../nirvana-nginx && make dev"

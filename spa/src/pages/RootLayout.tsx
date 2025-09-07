@@ -24,7 +24,7 @@ export default function RootLayout() {
         {/* place ribbons only on homepage; other pages keep space */}
       </div>
       {/* Header intentionally removed per requirement */}
-      <main className="w-full px-3 md:px-6 py-4">
+      <main className="w-full px-0 md:px-0 py-0">
         <Outlet />
       </main>
       {location.pathname !== '/demo' && (
