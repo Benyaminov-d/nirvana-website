@@ -229,7 +229,7 @@ The built application can be deployed to any static hosting service:
 ### Docker Deployment
 
 ```bash
-docker-compose up -d
+docker compose up -d
 ```
 
 ### Environment-Specific Builds

@@ -9,9 +9,9 @@ help:
 	@echo "======================================"
 	@echo "Available targets:"
 	@echo "  setup       - Setup development environment"
-	@echo "  dev         - Start development server with hot reload"
+	@echo "  start-dev   - Start development server (access via nginx)"
+	@echo "  start-prod  - Start production server (access via nginx)"
 	@echo "  build       - Build production assets"
-	@echo "  start       - Start production server"
 	@echo "  stop        - Stop all services"
 	@echo "  install     - Install dependencies"
 	@echo "  test        - Run tests"
@@ -19,9 +19,9 @@ help:
 	@echo "  clean       - Clean build artifacts and node_modules"
 	@echo ""
 	@echo "Prerequisites:"
-	@echo "  - Node.js 18+ installed"
-	@echo "  - Docker and Docker Compose (optional)"
-	@echo "  - Backend API running (for full functionality)"
+	@echo "  - Docker and Docker Compose installed"
+	@echo "  - Backend API running (nirvana_backend)"
+	@echo "  - nirvana_network created (run 'make setup' in nginx repo)"
 
 # Setup development environment
 setup:
@@ -40,12 +40,28 @@ install:
 	@echo "=== Installing Dependencies ==="
 	@cd spa && npm install
 
-# Start development server with hot reload
-dev:
-	@echo "=== Starting Development Server ==="
-	@echo "Frontend will be available at: http://localhost:5173"
-	@echo "Press Ctrl+C to stop"
-	@cd spa && npm run dev
+# Start development website (access through nginx only)
+start-dev:
+	@echo "=== Starting Development Website ==="
+	@docker compose up -d website-dev
+	@echo "Development server started in nirvana_network:"
+	@echo "  - nirvana_website_dev (Vite dev server)"
+	@echo ""
+	@echo "Access through nginx reverse proxy:"
+	@echo "  - Start nginx: cd ../nirvana-nginx && make dev"
+	@echo "  - Website via proxy: http://localhost/"
+
+# Start production website (access through nginx only)
+start-prod:
+	@echo "=== Starting Production Website ==="
+	@docker compose up -d website
+	@echo "Production server started in nirvana_network:"
+	@echo "  - nirvana_website (Nginx serving static files)"
+	@echo ""
+	@echo "Access through nginx reverse proxy:"
+	@echo "  - Start nginx: cd ../nirvana-nginx && make prod" 
+	@echo "  - Website via proxy: http://localhost/"
+
 
 # Build production assets
 build:
@@ -53,22 +69,10 @@ build:
 	@cd spa && npm run build
 	@echo "Build complete! Assets in spa/dist/"
 
-# Start production server (Docker)
-start:
-	@echo "=== Starting Production Server ==="
-	@docker-compose up -d frontend
-	@echo "Frontend available at: http://localhost:3000"
-
-# Start development server (Docker)
-dev-docker:
-	@echo "=== Starting Development Server (Docker) ==="
-	@docker-compose up -d frontend-dev
-	@echo "Frontend dev server available at: http://localhost:5173"
-
 # Stop all services
 stop:
 	@echo "=== Stopping Services ==="
-	@docker-compose down
+	@docker compose down
 
 # Run tests
 test:
@@ -84,17 +88,17 @@ lint:
 clean:
 	@echo "=== Cleaning Build Artifacts ==="
 	@cd spa && rm -rf dist/ node_modules/
-	@docker-compose down -v
+	@docker compose down -v
 	@echo "Cleanup complete"
 
 # Build Docker images
 docker-build:
 	@echo "=== Building Docker Images ==="
-	@docker-compose build --no-cache
+	@docker compose build --no-cache
 
 # Show logs
 logs:
-	@docker-compose logs -f frontend
+	@docker compose logs -f frontend
 
 # Development with backend
 dev-full:
