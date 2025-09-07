@@ -47,6 +47,10 @@ export default function TickerRibbons({ size = 14, mode = 'cvar95', country = 'U
   const outerRef = useRef<HTMLDivElement>(null);
   const [scrollPos, setScrollPos] = useState(0);
   const [isReady, setIsReady] = useState(false);
+  const [isDragging, setIsDragging] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
+  const [dragStart, setDragStart] = useState({ x: 0, scrollPos: 0 });
+  const animationRef = useRef<number | null>(null);
 
   // Static placeholder data for website
   const placeholderFeed: FeedItem[] = [
@@ -65,7 +69,25 @@ export default function TickerRibbons({ size = 14, mode = 'cvar95', country = 'U
   }, [mode, country]);
 
   const keyField = mode === 'cvar99' ? 'cvar99' : 'cvar95';
-  const title = mode === 'five_stars' ? 'Top Performers' : (mode === 'cvar99' ? 'CVaR 99%' : 'CVaR 95%');
+  
+  // Country-specific title text
+  const getCountrySpecificTitle = () => {
+    if (mode !== 'five_stars') {
+      return mode === 'cvar99' ? 'CVaR 99%' : 'CVaR 95%';
+    }
+    
+    switch (country) {
+      case 'US':
+        return 'EXPECTED LOSS: MORNINGSTAR GOLD MEDALIST + 5-STAR RATED US MUTUAL FUNDS (99-CVAR, ANNUALISED)';
+      case 'UK':
+        // For UK, we'll use the fallback text since we don't have product count logic
+        return 'EXPECTED LOSS: MORNINGSTAR GOLD MEDALIST + 5-STAR RATED UK and US ETF and MUTUAL FUNDS (99-CVAR, ANNUALISED) Aug 22, 2025';
+      default:
+        return 'EXPECTED LOSS: MORNINGSTAR GOLD MEDALIST + 5-STAR RATED UK and US ETF and MUTUAL FUNDS (99-CVAR, ANNUALISED) Aug 22, 2025';
+    }
+  };
+  
+  const title = getCountrySpecificTitle();
 
   const fontPx = getTickerFontSizePx(size);
 
@@ -75,10 +97,15 @@ export default function TickerRibbons({ size = 14, mode = 'cvar95', country = 'U
     const inner = innerRef.current;
     const outer = outerRef.current;
 
-    let animationId: number;
     const speed = 30; // pixels per second
 
     const animate = () => {
+      // Don't animate if dragging or hovering
+      if (isDragging || isHovered) {
+        animationRef.current = requestAnimationFrame(animate);
+        return;
+      }
+
       const innerWidth = inner.scrollWidth;
       const outerWidth = outer.clientWidth;
 
@@ -93,24 +120,77 @@ export default function TickerRibbons({ size = 14, mode = 'cvar95', country = 'U
         return newPos > maxScroll ? -outerWidth : newPos;
       });
 
-      animationId = requestAnimationFrame(animate);
+      animationRef.current = requestAnimationFrame(animate);
     };
 
     const timer = setTimeout(() => {
-      animationId = requestAnimationFrame(animate);
+      animationRef.current = requestAnimationFrame(animate);
     }, 1000);
 
     return () => {
       clearTimeout(timer);
-      if (animationId) cancelAnimationFrame(animationId);
+      if (animationRef.current) cancelAnimationFrame(animationRef.current);
     };
-  }, [isReady, feed.length]);
+  }, [isReady, feed.length, isDragging, isHovered]);
 
   useEffect(() => {
     if (innerRef.current) {
       innerRef.current.style.transform = `translateX(${-scrollPos}px)`;
     }
   }, [scrollPos]);
+
+  // Drag handlers
+  const handleMouseDown = (e: React.MouseEvent) => {
+    if (!outerRef.current) return;
+    
+    setIsDragging(true);
+    setDragStart({
+      x: e.clientX,
+      scrollPos: scrollPos
+    });
+    
+    e.preventDefault();
+  };
+
+  const handleMouseMove = (e: MouseEvent) => {
+    if (!isDragging || !outerRef.current) return;
+    
+    const deltaX = e.clientX - dragStart.x;
+    const newScrollPos = dragStart.scrollPos - deltaX;
+    
+    const innerWidth = innerRef.current?.scrollWidth || 0;
+    const outerWidth = outerRef.current.clientWidth;
+    const maxScroll = innerWidth - outerWidth;
+    
+    // Clamp scroll position
+    const clampedPos = Math.max(-outerWidth, Math.min(maxScroll, newScrollPos));
+    setScrollPos(clampedPos);
+  };
+
+  const handleMouseUp = () => {
+    setIsDragging(false);
+  };
+
+  const handleMouseEnter = () => {
+    setIsHovered(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+  };
+
+  // Add global mouse event listeners for drag
+  useEffect(() => {
+    if (isDragging) {
+      document.addEventListener('mousemove', handleMouseMove);
+      document.addEventListener('mouseup', handleMouseUp);
+      
+      return () => {
+        document.removeEventListener('mousemove', handleMouseMove);
+        document.removeEventListener('mouseup', handleMouseUp);
+      };
+    }
+  }, [isDragging, dragStart]);
 
   if (!isReady || feed.length === 0) {
     return (
@@ -152,7 +232,13 @@ export default function TickerRibbons({ size = 14, mode = 'cvar95', country = 'U
           {asOf}
         </div>
       </div>
-      <div className="relative overflow-hidden select-none" style={{ cursor: 'grab' }}>
+      <div 
+        className="relative overflow-hidden select-none" 
+        style={{ cursor: isDragging ? 'grabbing' : 'grab' }}
+        onMouseDown={handleMouseDown}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+      >
         <div ref={innerRef} className="whitespace-nowrap will-change-transform">
           {seq}
         </div>
