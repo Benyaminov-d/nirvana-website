@@ -74,13 +74,29 @@ export default function TickerRibbons({ size = 14, mode = 'cvar95', country = 'U
         const data = await response.json();
         
         if (data.success) {
-          setFeed(data.items || []);
-          setAsOf(data.items && data.items.length > 0 ? data.items[0].as_of || '06 Sep 2025' : '06 Sep 2025');
+          // Filter out items with null CVaR values as additional safety measure
+          const validItems = (data.items || []).filter((item: FeedItem) => {
+            const keyField = mode === 'cvar99' ? 'cvar99' : 'cvar95';
+            const cvarValue = item[keyField];
+            
+            // Ensure we have valid CVaR data and it's above -95% threshold
+            return cvarValue !== null && 
+                   cvarValue !== undefined && 
+                   Number.isFinite(cvarValue) &&
+                   cvarValue >= -0.95;
+          });
+          
+          setFeed(validItems);
+          setAsOf(validItems.length > 0 ? validItems[0].as_of || '06 Sep 2025' : '06 Sep 2025');
           setTitleSuffix(data.title_suffix || '');
           
-          // Show message if no data
-          if (!data.items || data.items.length === 0) {
-            console.warn('No ticker data available:', data.message || 'No items returned');
+          // Show message if no valid data after filtering
+          if (validItems.length === 0) {
+            console.warn('No valid ticker data available after filtering:', {
+              originalCount: data.items?.length || 0,
+              filteredCount: validItems.length,
+              message: data.message || 'No valid items after filtering'
+            });
           }
         } else {
           throw new Error('Invalid response from ticker API');
@@ -270,6 +286,12 @@ export default function TickerRibbons({ size = 14, mode = 'cvar95', country = 'U
 
   const seq = extendedFeed.map((it, i) => {
     if (!it.symbol) return null;
+    
+    // Additional safety check: ensure CVaR value is valid and above threshold
+    const cvarValue = it[keyField];
+    if (cvarValue === null || cvarValue === undefined || !Number.isFinite(cvarValue) || cvarValue < -0.95) {
+      return null;
+    }
 
     const sizeClass = fontPx >= 24 ? 'text-2xl' : fontPx >= 18 ? 'text-xl' : fontPx >= 16 ? 'text-lg' : 'text-sm';
     return (
@@ -278,11 +300,11 @@ export default function TickerRibbons({ size = 14, mode = 'cvar95', country = 'U
           {it.symbol}
         </span>
         <span className="text-[#FF4A3D] font-semibold" style={textStyle}>
-          {fmtLoss(it[keyField])}
+          {fmtLoss(cvarValue)}
         </span>
       </span>
     );
-  });
+  }).filter(Boolean); // Remove null entries
 
   return (
     <div className="glass nv-glass--inner-hairline text-white border border-white/10 p-1 rounded-none w-full" ref={outerRef}>
