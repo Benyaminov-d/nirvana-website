@@ -21,9 +21,10 @@ export default function WhatIsThisAllAboutPage() {
             controls 
             className="w-full max-w-xl"
             controlsList="nodownload"
-            preload="auto"
+            preload="metadata"
+            playsInline
           >
-            <source src="/static/audio/what_is_this_all_about.mp3" type="audio/mp4" />
+            <source src="/static/audio/what_is_this_all_about.mp3" type="audio/mpeg" />
             Your browser does not support the audio element.
           </audio>
         </div>
