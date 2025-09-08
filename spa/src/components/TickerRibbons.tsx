@@ -141,13 +141,15 @@ export default function TickerRibbons({ size = 14, mode = 'cvar95', country = 'U
     };
   }, [isReady]); // Re-run when component is ready
 
-  const keyField = mode === 'cvar99' ? 'cvar99' : 'cvar95';
+  const keyField = (mode === 'cvar99' || mode === 'five_stars') ? 'cvar99' : 'cvar95';
   
   // Country-specific title text
   const getCountrySpecificTitle = () => {
     if (mode !== 'five_stars') {
       return mode === 'cvar99' ? 'CVaR 99%' : 'CVaR 95%';
     }
+    
+    // Always use CVaR 99% labels for five_stars mode
     
     // Use API-provided title suffix if available
     if (titleSuffix) {
