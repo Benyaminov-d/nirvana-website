@@ -68,6 +68,7 @@ export default function TrustCodeProgrammePage() {
   };
 
   const verticals = [
+    'Charities, NGOs & non-profits',
     'Financial institutions',
     'Registered investment advisers (referral channel)',
     'RIA self-use (seat licence)',
@@ -77,11 +78,11 @@ export default function TrustCodeProgrammePage() {
     'Creators and publishers',
     'Associations & membership organisations',
     'Private equity & conglomerates',
-    'Charities, NGOs & non-profits',
     'Faith-based organisations'
   ];
 
   const onePagers = [
+    { title: 'Charities, NGOs & non-profits', filename: 'Charities_NGOs_and_non_profits_Nirvana_Trust_Code_programme.pdf' },
     { title: 'Financial Institutions', filename: 'Financial Institutions - Nirvana Trust Code Programme.pdf' },
     { title: 'RIA Referral Channel', filename: 'Investment_Advisers_Referral_Channel_Nirvana_Trust_Code_Programme.pdf' },
     { title: 'RIA self-use plan (seat licence)', filename: 'Investment Advisers self-use plan (seat licence).pdf' },
@@ -91,7 +92,6 @@ export default function TrustCodeProgrammePage() {
     { title: 'Credit Card Networks', filename: 'Credit Card Networks - Nirvana Trust Code Programme.pdf' },
     { title: 'Creators & publishers', filename: 'Creators and Publishers - Nirvana Trust Code Programme.pdf' },
     { title: 'Associations', filename: 'Associations - Nirvana Trust Code Programme.pdf' },
-    { title: 'Charities, NGOs & non-profits', filename: 'Charities_NGOs_and_non_profits_Nirvana_Trust_Code_programme.pdf' },
     { title: 'Faith-based Organisations', filename: 'Faith-based Organisations - Nirvana Trust Code Programme.pdf' }
   ];
 
@@ -145,7 +145,7 @@ export default function TrustCodeProgrammePage() {
         <header className="text-center mb-8">
           <h1 className="trajan-text text-4xl md:text-5xl text-white mb-4">Trust Code programme</h1>
           <p className="text-xl md:text-2xl text-gray-200 mb-8">
-            Give your audience 10% off. Earn 10% of net subscription revenue for five years. No integration, no servicing. Search neutrality preserved.
+            Publish your Trust Code and earn 10% of our subscription revenue for each subscriber who chooses your Code.
           </p>
           <div className="flex flex-col md:flex-row gap-4 justify-center">
             <button
@@ -190,18 +190,18 @@ export default function TrustCodeProgrammePage() {
         <h2 className="trajan-text text-2xl md:text-3xl text-white mb-6">Who it is for — choose your one-pager</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-gray-200/95">
           <div className="space-y-3">
+            <p><strong>Charities, NGOs & non-profits</strong> – download the causes one-pager.</p>
             <p><strong>Financial institutions</strong> – banks, credit unions, and other FIs – download the FI one-pager.</p>
             <p><strong>Registered investment advisers (referral channel)</strong> – download the RIA referral one-pager.</p>
             <p><strong>RIA self-use (seat licence)</strong> – terms for adviser-paid client seats; separate from Trust Code payouts when the RIA pays centrally.</p>
             <p><strong>Credit card networks and issuers</strong> – Operation Causeway one-pager.</p>
-            <p><strong>Insurers</strong> – download insurer one-pager.</p>
             <p><strong>Enterprise retailers</strong> – download retailer one-pager.</p>
           </div>
           <div className="space-y-3">
             <p><strong>Creators and publishers</strong> – download creators one-pager.</p>
             <p><strong>Associations & membership organisations</strong> – download associations one-pager.</p>
             <p><strong>Private equity & conglomerates</strong> – portfolio-company distribution model.</p>
-            <p><strong>Charities, NGOs & non-profits</strong> – download the causes one-pager.</p>
+            <p><strong>Insurers</strong> – download insurer one-pager.</p>
             <p><strong>Faith-based organisations</strong> – download the faith-based one-pager.</p>
           </div>
         </div>
