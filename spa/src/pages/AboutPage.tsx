@@ -9,10 +9,19 @@ export default function AboutPage() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
           <div className="md:col-span-1 order-1 md:order-none">
             <div className="relative rounded-xl overflow-hidden border border-white/10 nv-glass--inner-hairline bg-black/20" style={{ aspectRatio: '3 / 4' }}>
-              <img src={new URL('../assets/arman.jpg', import.meta.url).toString()} alt="Arman Valaquenta" className="absolute inset-0 w-full h-full object-cover object-top" />
+              <img src={new URL('../assets/arman/arman.jpg', import.meta.url).toString()} alt="Arman Valaquenta" className="absolute inset-0 w-full h-full object-cover object-top" />
             </div>
             <div className="relative rounded-xl overflow-hidden border border-white/10 nv-glass--inner-hairline bg-black/20 mt-4" style={{ aspectRatio: '3 / 4' }}>
-              <img src={new URL('../assets/arman_2.jpg', import.meta.url).toString()} alt="Arman Valaquenta" className="absolute inset-0 w-full h-full object-cover object-top" />
+              <img src={new URL('../assets/arman/arman_2.jpg', import.meta.url).toString()} alt="Arman Valaquenta" className="absolute inset-0 w-full h-full object-cover object-top" />
+            </div>
+            <div className="relative rounded-xl overflow-hidden border border-white/10 nv-glass--inner-hairline bg-black/20 mt-4" style={{ aspectRatio: '4 / 3' }}>
+              <img src={new URL('../assets/arman/arman_3.jpg', import.meta.url).toString()} alt="Arman Valaquenta" className="absolute inset-0 w-full h-full object-cover object-center" />
+            </div>
+            <div className="relative rounded-xl overflow-hidden border border-white/10 nv-glass--inner-hairline bg-black/20 mt-4" style={{ aspectRatio: '4 / 3' }}>
+              <img src={new URL('../assets/arman/arman_4.jpg', import.meta.url).toString()} alt="Arman Valaquenta" className="absolute inset-0 w-full h-full object-cover object-center" />
+            </div>
+            <div className="relative rounded-xl overflow-hidden border border-white/10 nv-glass--inner-hairline bg-black/20 mt-4" style={{ aspectRatio: '4 / 3' }}>
+              <img src={new URL('../assets/arman/arman_5.jpg', import.meta.url).toString()} alt="Arman Valaquenta" className="absolute inset-0 w-full h-full object-cover object-center" />
             </div>
           </div>
 
