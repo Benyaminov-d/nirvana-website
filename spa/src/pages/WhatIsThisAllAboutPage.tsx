@@ -12,7 +12,7 @@ export default function WhatIsThisAllAboutPage() {
   return (
     <main className="glass max-w-5xl mx-auto px-4 py-6 md:mt-12">
       <h2 className="text-center pt-[32pt] mb-8">
-        <span className="trajan-text text-2xl md:text-3xl">What is this all about – message from the founder</span>
+        <span className="trajan-text text-2xl md:text-3xl">What is this all about - a message from the founder</span>
       </h2>
       
       {audioReady && (

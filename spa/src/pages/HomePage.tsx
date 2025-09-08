@@ -186,7 +186,7 @@ export default function HomePage() {
           {/* Mobile-only navigation buttons */}
           <div className="md:hidden col-span-1 px-2 mt-8 mb-6">
             <div className="flex flex-col gap-3">
-              <a href="/what-is-this-all-about" role="button" className="glass trajan-text nv-glass--inner-hairline border border-white/10 rounded-lg px-3 py-2 inline-block text-gray-200 hover:text-white text-center">What's this all about - message from the founder</a>
+              <a href="/what-is-this-all-about" role="button" className="glass trajan-text nv-glass--inner-hairline border border-white/10 rounded-lg px-3 py-2 inline-block text-gray-200 hover:text-white text-center">What is this all about - a message from the founder</a>
               <a href="/why-people-use-nirvana" role="button" className="glass trajan-text nv-glass--inner-hairline border border-white/10 rounded-lg px-3 py-2 inline-block text-gray-200 hover:text-white text-center">Why do we exist</a>
               <a href="/what-is-compass-score" role="button" className="glass trajan-text nv-glass--inner-hairline border border-white/10 rounded-lg px-3 py-2 inline-block text-gray-200 hover:text-white text-center">The Compass Score</a>
               <a href="/about" role="button" className="glass trajan-text nv-glass--inner-hairline border border-white/10 rounded-lg px-3 py-2 inline-block text-gray-200 hover:text-white text-center">About us</a>
