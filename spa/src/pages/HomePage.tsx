@@ -10,7 +10,10 @@ function ForestSlider() {
   const forestImages = [
     { src: new URL('../assets/forests/forests_1.jpg', import.meta.url).toString(), alt: 'Forest conservation 1' },
     { src: new URL('../assets/forests/forests_2.jpg', import.meta.url).toString(), alt: 'Forest conservation 2' },
-    { src: new URL('../assets/forests/forests_3.jpg', import.meta.url).toString(), alt: 'Forest conservation 3' }
+    { src: new URL('../assets/forests/forests_3.jpg', import.meta.url).toString(), alt: 'Forest conservation 3' },
+    { src: new URL('../assets/forests/forests_4.jpg', import.meta.url).toString(), alt: 'Forest conservation 4' },
+    { src: new URL('../assets/forests/forests_5.jpg', import.meta.url).toString(), alt: 'Forest conservation 5' },
+    { src: new URL('../assets/forests/forests_6.jpg', import.meta.url).toString(), alt: 'Forest conservation 6' }
   ];
 
   useEffect(() => {
@@ -23,7 +26,7 @@ function ForestSlider() {
 
   return (
     <div className="max-w-[450px] mx-auto">
-      <div className="glass max-w-[300px] mx-auto nv-glass--inner-hairline border border-white/10 rounded-2xl overflow-hidden relative">
+      <div className="glass max-w-[300px] max-h-[200px] mx-auto nv-glass--inner-hairline border border-white/10 rounded-2xl overflow-hidden relative">
         {/* <img 
           key={0}
           src={forestImages[0].src} 

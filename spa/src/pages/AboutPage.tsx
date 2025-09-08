@@ -11,6 +11,9 @@ export default function AboutPage() {
             <div className="relative rounded-xl overflow-hidden border border-white/10 nv-glass--inner-hairline bg-black/20" style={{ aspectRatio: '3 / 4' }}>
               <img src={new URL('../assets/arman.jpg', import.meta.url).toString()} alt="Arman Valaquenta" className="absolute inset-0 w-full h-full object-cover object-top" />
             </div>
+            <div className="relative rounded-xl overflow-hidden border border-white/10 nv-glass--inner-hairline bg-black/20 mt-4" style={{ aspectRatio: '3 / 4' }}>
+              <img src={new URL('../assets/arman_2.jpg', import.meta.url).toString()} alt="Arman Valaquenta" className="absolute inset-0 w-full h-full object-cover object-top" />
+            </div>
           </div>
 
           <div className="md:col-span-2 text-gray-200/95 leading-relaxed">
