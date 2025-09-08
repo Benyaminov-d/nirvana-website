@@ -198,8 +198,9 @@ export default function HtmlContent({ src, baseHref, className, title, fallback,
         ref={iframeRef}
         title={title ?? 'document'}
         srcDoc={doc}
-        sandbox="allow-same-origin"
+        sandbox="allow-same-origin allow-scripts"
         allowTransparency={true}
+        allow="autoplay; encrypted-media"
         scrolling="no"
         style={{ 
           width: '100%', 

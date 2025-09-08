@@ -10,6 +10,7 @@ import WhyPeopleUseNirvanaPage from './pages/WhyPeopleUseNirvanaPage';
 import CompassScorePage from './pages/CompassScorePage';
 import TermsPage from './pages/TermsPage';
 import TrustCodeProgrammePage from './pages/TrustCodeProgrammePage';
+import WhatIsThisAllAboutPage from './pages/WhatIsThisAllAboutPage';
 import NotFoundPage from './pages/NotFoundPage';
 import { ComplianceProvider } from './context/ComplianceContext';
 
@@ -23,6 +24,7 @@ const router = createBrowserRouter([
       { path: 'member-eula', element: <MemberEulaPage /> },
       { path: 'why-people-use-nirvana', element: <WhyPeopleUseNirvanaPage /> },
       { path: 'what-is-compass-score', element: <CompassScorePage /> },
+      { path: 'what-is-this-all-about', element: <WhatIsThisAllAboutPage /> },
       { path: 'terms', element: <TermsPage /> },
       { path: 'trust-code-programme', element: <TrustCodeProgrammePage /> },
       { path: '*', element: <NotFoundPage /> },
