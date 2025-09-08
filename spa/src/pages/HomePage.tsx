@@ -24,7 +24,7 @@ function ForestSlider() {
 
   return (
     <div className="max-w-[450px] mx-auto">
-      <div className="glass max-w-[300px] max-h-[200px] mx-auto nv-glass--inner-hairline border border-white/10 rounded-2xl overflow-hidden relative">
+      <div className="glass max-w-[350px] max-h-[250px] mx-auto nv-glass--inner-hairline border border-white/10 rounded-2xl overflow-hidden relative">
         {/* <img 
           key={0}
           src={forestImages[0].src} 
@@ -37,7 +37,7 @@ function ForestSlider() {
               key={index}
               src={image.src} 
               alt={image.alt}
-              className={`w-full h-auto max-w-[300px] mx-auto object-cover transition-opacity duration-1000 ${
+              className={`w-full h-auto max-w-[350px] mx-auto object-cover transition-opacity duration-1000 ${
                 index === currentImage ? 'opacity-100' : 'opacity-0 absolute inset-0'
               }`}
             />
@@ -355,10 +355,13 @@ export default function HomePage() {
             {/* Desktop only buttons - hidden on mobile */}
             <div className="hidden md:flex flex-col row-span-1 gap-4 w-full justify-center content-center">
               <div className="flex flex-row flex-wrap gap-4 justify-center">
-                <a href="/what-is-this-all-about" role="button" className="glass text-lg trajan-text nv-glass--inner-hairline border border-white/10 rounded-lg px-4 py-2 inline-block h-auto self-start text-white hover:text-gray-200 text-center">What's this all about</a>
-                <a href="/why-people-use-nirvana" role="button" className="glass text-lg trajan-text nv-glass--inner-hairline border border-white/10 rounded-lg px-4 py-2 inline-block h-auto self-start text-white hover:text-gray-200 text-center">Why do we exist</a>
+                <a href="/what-is-this-all-about" role="button" className="glass text-lg trajan-text nv-glass--inner-hairline border border-white/10 rounded-lg px-4 py-2 inline-block h-auto self-start text-white hover:text-gray-200 text-center">
+                  <div>What is this all about</div>
+                  <div>a message from the founder</div>
+                </a>
               </div>
               <div className="flex flex-row flex-wrap gap-4 justify-center">
+                <a href="/why-people-use-nirvana" role="button" className="glass text-lg trajan-text nv-glass--inner-hairline border border-white/10 rounded-lg px-4 py-2 inline-block h-auto self-start text-white hover:text-gray-200 text-center">Why do we exist</a>
                 <a href="/what-is-compass-score" role="button" className="glass text-lg trajan-text nv-glass--inner-hairline border border-white/10 rounded-lg px-4 py-2 inline-block h-auto self-start text-white hover:text-gray-200 text-center">The Compass Score</a>
                 <a href="/about" role="button" className="glass text-lg trajan-text nv-glass--inner-hairline border border-white/10 rounded-lg px-4 py-2 inline-block h-auto self-start text-white hover:text-gray-200 text-center">About us</a>
                 <a href="/trust-code-programme" role="button" className="glass text-lg trajan-text nv-glass--inner-hairline border border-white/10 rounded-lg px-4 py-2 inline-block h-auto self-start text-white hover:text-gray-200 text-center">Trust Code Programme</a>

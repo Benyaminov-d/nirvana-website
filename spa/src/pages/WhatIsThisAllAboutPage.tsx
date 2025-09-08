@@ -11,12 +11,13 @@ export default function WhatIsThisAllAboutPage() {
   
   return (
     <main className="glass max-w-5xl mx-auto px-4 py-6 md:mt-12">
-      <h2 className="text-center pt-[32pt] mb-8">
-        <span className="trajan-text text-2xl md:text-3xl">What is this all about - a message from the founder</span>
+      <h2 className="text-center pt-[32pt] mb-16">
+        <div className="trajan-text text-2xl md:text-3xl">What is this all about</div>
+        <div className="trajan-text text-2xl md:text-3xl">a message from the founder</div>
       </h2>
       
       {audioReady && (
-        <div className="w-full flex justify-center mb-12">
+        <div className="w-full flex justify-center mt-6 mb-12">
           <audio 
             controls 
             className="w-full max-w-xl"
