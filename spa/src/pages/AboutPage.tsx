@@ -20,9 +20,6 @@ export default function AboutPage() {
             <div className="relative rounded-xl overflow-hidden border border-white/10 nv-glass--inner-hairline bg-black/20 mt-4" style={{ aspectRatio: '4 / 3' }}>
               <img src={new URL('../assets/arman/arman_4.jpg', import.meta.url).toString()} alt="Arman Valaquenta" className="absolute inset-0 w-full h-full object-cover object-center" />
             </div>
-            <div className="relative rounded-xl overflow-hidden border border-white/10 nv-glass--inner-hairline bg-black/20 mt-4" style={{ aspectRatio: '4 / 3' }}>
-              <img src={new URL('../assets/arman/arman_5.jpg', import.meta.url).toString()} alt="Arman Valaquenta" className="absolute inset-0 w-full h-full object-cover object-center" />
-            </div>
           </div>
 
           <div className="md:col-span-2 text-gray-200/95 leading-relaxed">

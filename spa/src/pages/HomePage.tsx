@@ -11,6 +11,7 @@ function ForestSlider() {
     { src: new URL('../assets/forests/forests_1.jpg', import.meta.url).toString(), alt: 'Forest conservation 1' },
     { src: new URL('../assets/forests/forests_2.jpg', import.meta.url).toString(), alt: 'Forest conservation 2' },
     { src: new URL('../assets/forests/forests_3.jpg', import.meta.url).toString(), alt: 'Forest conservation 3' },
+    { src: new URL('../assets/forests/forests_4.jpg', import.meta.url).toString(), alt: 'Forest conservation 4' },
   ];
 
   useEffect(() => {
