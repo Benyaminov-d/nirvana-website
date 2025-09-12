@@ -175,7 +175,7 @@ export default function TrustCodeProgrammePage() {
           <div className="mt-8">
             <h3 className="text-xl text-white mb-4 font-medium">Economics at a glance</h3>
             <ul className="space-y-2 text-gray-200/95">
-              <li>• List price: USD 569 per Member per year</li>
+              <li>• List price: USD 569 per Member per year (billed annually in advance)</li>
               <li>• Member with Trust Code: 10% off</li>
               <li>• Partner share: 10% of net subscription revenue for five years per first-touch Member</li>
               <li>• Scope: subscription revenue only</li>
