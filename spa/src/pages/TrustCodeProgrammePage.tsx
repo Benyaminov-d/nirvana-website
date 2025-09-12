@@ -35,7 +35,7 @@ export default function TrustCodeProgrammePage() {
     setSubmitMessage('');
     
     try {
-      const response = await postJSON('/contact/trust-code-request', formData);
+      const response = await postJSON('/contact/trust-code-request', formData) as { success: boolean; message?: string };
       
       if (response.success) {
         setSubmitStatus('success');
@@ -82,6 +82,7 @@ export default function TrustCodeProgrammePage() {
   ];
 
   const onePagers = [
+    { title: 'Indigenous Nations & Communities', filename: 'Indigenous_Nations_and_Communities_Nirvana_Trust_Code_programme.pdf' },
     { title: 'Charities, NGOs & non-profits', filename: 'Charities_NGOs_and_non_profits_Nirvana_Trust_Code_programme.pdf' },
     { title: 'Financial Institutions', filename: 'Financial Institutions - Nirvana Trust Code Programme.pdf' },
     { title: 'RIA Referral Channel', filename: 'Investment_Advisers_Referral_Channel_Nirvana_Trust_Code_Programme.pdf' },
