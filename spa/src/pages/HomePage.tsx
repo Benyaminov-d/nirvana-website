@@ -305,7 +305,7 @@ export default function HomePage() {
                   }, 2500);
                 }}>
                   <div className="px-5 py-4 flex-1">
-                    <input type="text" placeholder="Ask Satya..." className="w-full bg-transparent outline-none text-white placeholder:text-gray-400 leading-none" disabled={mobileLocked} />
+                    <input type="text" placeholder="Please search by product name, symbol or by loss-limit.." className="w-full bg-transparent outline-none text-white placeholder:text-gray-400 leading-none" disabled={mobileLocked} />
                   </div>
                   <div>
                     <button type="submit" disabled={mobileLocked} className="h-[40px] px-4 md:px-4 mr-2 bg-[#c19658] rounded-xl text-black hover:opacity-90 hover:bg-[#c19658]/90 disabled:opacity-60 disabled:cursor-not-allowed">
@@ -483,15 +483,15 @@ export default function HomePage() {
                     ansRow.className = 'flex justify-end';
                     const ans = document.createElement('p');
                     ans.className = 'chat-bubble chat-bubble--right fade-in-up';
-                    ans.textContent = 'Enter a product name or symbol, or specify a loss limit (e.g., −20%)';
-                    // ans.textContent = 'Thank you for your message, Nirvana will be live soon';
+                    // ans.textContent = 'Enter a product name or symbol, or specify a loss limit (e.g., −20%)';
+                    ans.textContent = 'Thank you for your message, Nirvana will be live soon';
                     ansRow.appendChild(ans);
                     chatRef.current?.appendChild(ansRow);
                     chatRef.current?.scrollTo({ top: chatRef.current.scrollHeight });
                   }, 2500);
                 }}>
                   <div className="px-5 py-4 flex-1">
-                    <input type="text" placeholder="Ask Satya..." className="w-full bg-transparent outline-none text-white placeholder:text-gray-400 leading-none" disabled={locked} />
+                    <input type="text" placeholder="Please search by product name, symbol or by loss-limit.." className="w-full bg-transparent outline-none text-white placeholder:text-gray-400 leading-none" disabled={locked} />
                   </div>
                   <div>
                     <button type="submit" disabled={locked} className="h-[40px] px-4 md:px-4 mr-2 bg-[#c19658] rounded-xl text-black hover:opacity-90 hover:bg-[#c19658]/90 disabled:opacity-60 disabled:cursor-not-allowed">
