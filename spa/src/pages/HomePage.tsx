@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState, useCallback } from 'react';
 import { fetchProductsPreview } from '../services/products';
 import TickerRibbons from '../components/TickerRibbons';
 import { useCompliance } from '../context/ComplianceContext';
@@ -75,6 +75,21 @@ export default function HomePage() {
   const [showTip, setShowTip] = useState(false);
   const [mobileLocked, setMobileLocked] = useState(false);
   const [mobileShowTip, setMobileShowTip] = useState(false);
+  const handleWsjDownload = useCallback((e?: React.MouseEvent) => {
+    try {
+      if (e) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+      const url = '/static/pdf/WSJ_Article_30_July_2025.pdf';
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'WSJ_Article_30_July_2025.pdf';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    } catch {}
+  }, []);
   
   // Use selected region for tickers, fallback to US if not set or insufficient data
   const tickerCountry = useMemo(() => {
@@ -157,7 +172,7 @@ export default function HomePage() {
         <TickerRibbons size={20} mode="five_stars" country={tickerCountry} />
       </div>
       <div className="w-full">
-        <div className="w-full px-3 md:px-6 grid grid-cols-1 md:grid-cols-12 gap-4 pt-3 md:pt-2 pb-8 items-stretch md:overflow-hidden md:h-[calc(100dvh-var(--rib-h,84px))]">
+        <div className="w-full px-3 md:px-6 grid grid-cols-1 md:grid-cols-12 gap-4 pt-3 md:pt-2 pb-8 items-stretch 2xl:h-[calc(100dvh-var(--rib-h,84px))]">
           {/* Mobile-only WSJ quote */}
           <div className="md:hidden col-span-1 text-center px-2 mt-24 mb-6">
             <div className="trajan-text text-2xl text-white">
@@ -168,6 +183,19 @@ export default function HomePage() {
                     <span>- </span>
                     <span className="underline underline-offset-2 decoration-[#ff7f50]">Wall Street Journal,</span>
                     <span> 30th July 2025</span>
+                    <button
+                      type="button"
+                      onClick={handleWsjDownload}
+                      className="ml-2 inline-flex items-center justify-center align-middle rounded-md border border-white/20 text-white hover:bg-white/10 p-1"
+                      title="Download the WSJ article (PDF)"
+                      aria-label="Download the WSJ article (PDF)"
+                    >
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                        <polyline points="7 10 12 15 17 10" />
+                        <line x1="12" y1="15" x2="12" y2="3" />
+                      </svg>
+                    </button>
                   </div>
                 </div>
               </a>
@@ -331,6 +359,19 @@ export default function HomePage() {
                       <div className="mt-2">
                         <span className="underline underline-offset-2 decoration-[#ff7f50]">- Wall Street Journal,</span>
                         <span> 30th July 2025</span>
+                        <button
+                          type="button"
+                          onClick={handleWsjDownload}
+                          className="ml-2 inline-flex items-center justify-center align-middle rounded-md border border-white/20 text-white hover:bg-white/10 p-1"
+                          title="Download the WSJ article (PDF)"
+                          aria-label="Download the WSJ article (PDF)"
+                        >
+                          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                            <polyline points="7 10 12 15 17 10" />
+                            <line x1="12" y1="15" x2="12" y2="3" />
+                          </svg>
+                        </button>
                       </div>
                     </div>
                   </a>
@@ -344,6 +385,9 @@ export default function HomePage() {
             </div>
             <div className="flex flex-col max-w-[400px] w-full">
               <div className="flex flex-col max-w-[400px] gap-4">
+                <a href="/what-does-an-annual-nirvana-membership-give-you" role="button" className="glass nv-glass--inner-hairline border border-white/10 rounded-lg px-3 py-2 inline-block text-gray-200 hover:text-white">What does an annual Nirvana membership give you?</a>
+                <a href="/nirvana-membership-fees" role="button" className="glass nv-glass--inner-hairline border border-white/10 rounded-lg px-3 py-2 inline-block text-gray-200 hover:text-white">Nirvana membership fees</a>
+                <a href="/why-do-i-need-it" role="button" className="glass nv-glass--inner-hairline border border-white/10 rounded-lg px-3 py-2 inline-block text-gray-200 hover:text-white">Sur - why do I need it?</a>
                 <a href="/member-eula" role="button" className="glass nv-glass--inner-hairline border border-white/10 rounded-lg px-3 py-2 inline-block text-gray-200 hover:text-white">Member EULA</a>
                 <img src={new URL('../assets/NirvanaFireFlyLogo.png', import.meta.url).toString()} alt="Nirvana" className="h-auto mx-auto max-h-40 w-auto object-contain" />
               </div>
@@ -496,15 +540,18 @@ export default function HomePage() {
           </div>
         </div>
 
-        {/* Mobile-only bottom bar: logo left, About/EULA right */}
+        {/* Mobile-only bottom bar: full-width buttons, logo below */}
         <div className="md:hidden px-3 pb-5">
-          <div className="grid grid-cols-2 gap-4 items-center">
-            <div className="flex items-center justify-center">
-              <img src={new URL('../assets/NirvanaFireFlyLogo.png', import.meta.url).toString()} alt="Nirvana" className="h-auto max-h-24 w-auto object-contain" />
-            </div>
+          <div className="flex flex-col gap-4 items-stretch">
             <div className="flex flex-col gap-3">
-              {/* <a href="/about" className="glass nv-glass--inner-hairline border border-white/10 rounded-lg px-3 py-2 inline-block text-gray-200 hover:text-white text-center">About us</a> */}
-              <a href="/member-eula" role="button" className="glass nv-glass--inner-hairline border border-white/10 rounded-lg px-3 py-2 inline-block text-gray-200 hover:text-white text-center">Member EULA</a>
+              {/* <a href="/about" className="glass nv-glass--inner-hairline border border-white/10 rounded-lg px-3 py-2 block w-full text-gray-200 hover:text-white text-center">About us</a> */}
+              <a href="/what-does-an-annual-nirvana-membership-give-you" role="button" className="glass nv-glass--inner-hairline border border-white/10 rounded-lg px-3 py-2 block w-full text-gray-200 hover:text-white text-center">What does an annual Nirvana membership give you?</a>
+              <a href="/nirvana-membership-fees" role="button" className="glass nv-glass--inner-hairline border border-white/10 rounded-lg px-3 py-2 block w-full text-gray-200 hover:text-white text-center">Nirvana membership fees</a>
+              <a href="/why-do-i-need-it" role="button" className="glass nv-glass--inner-hairline border border-white/10 rounded-lg px-3 py-2 block w-full text-gray-200 hover:text-white text-center">Sur - why do I need it?</a>
+              <a href="/member-eula" role="button" className="glass nv-glass--inner-hairline border border-white/10 rounded-lg px-3 py-2 block w-full text-gray-200 hover:text-white text-center">Member EULA</a>
+            </div>
+            <div className="flex items-center justify-center">
+              <img src={new URL('../assets/NirvanaFireFlyLogo.png', import.meta.url).toString()} alt="Nirvana" className="h-auto max-h-44 w-auto object-contain" />
             </div>
           </div>
         </div>
