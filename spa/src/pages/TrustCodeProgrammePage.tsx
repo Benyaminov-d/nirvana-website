@@ -130,7 +130,7 @@ export default function TrustCodeProgrammePage() {
     },
     {
       question: 'What about RIAs that wish to use Nirvana directly with clients?',
-      answer: 'RIAs may purchase seat licences at USD 45 per client per month, billed annually. When the RIA pays centrally, Trust Code payouts and discounts do not apply to those seats.'
+      answer: 'RIAs may purchase seat licences at USD 569 per client per year, billed annually. When the RIA pays centrally, Trust Code payouts and discounts do not apply to those seats.'
     },
     {
       question: 'What is the customer billing model?',
@@ -175,7 +175,7 @@ export default function TrustCodeProgrammePage() {
           <div className="mt-8">
             <h3 className="text-xl text-white mb-4 font-medium">Economics at a glance</h3>
             <ul className="space-y-2 text-gray-200/95">
-              <li>• List price: USD 45 per Member per month</li>
+              <li>• List price: USD 569 per Member per year</li>
               <li>• Member with Trust Code: 10% off</li>
               <li>• Partner share: 10% of net subscription revenue for five years per first-touch Member</li>
               <li>• Scope: subscription revenue only</li>
