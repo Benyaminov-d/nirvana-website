@@ -247,7 +247,7 @@ export default function HomePage() {
                     className="w-3 h-3 inline-flex items-center justify-center rounded-full border border-white/40 text-white/80 hover:text-white hover:border-white text-[8px]"
                     title="What's this?"
                   >
-                    ?
+                    i
                   </button>
                   {mobileShowTip && (
                     <div className="text-[12px] absolute top-full left-1/2 -translate-x-1/2 mt-2 z-10 text-gray-300 bg-black/40 border border-white/10 rounded-md p-2 w-fit whitespace-nowrap">
@@ -432,7 +432,7 @@ export default function HomePage() {
                     className="w-3 h-3 inline-flex items-center justify-center rounded-full border border-white/40 text-white/80 hover:text-white hover:border-white text-[8px]"
                     title="What's this?"
                   >
-                    ?
+                    i
                   </button>
                   {showTip && (
                     <div className="text-[12px] absolute top-full left-1/2 -translate-x-1/2 mt-2 z-10 text-gray-300 bg-black/40 border border-white/10 rounded-md p-2 w-fit whitespace-nowrap">
