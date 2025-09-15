@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react';
 import { useCompliance, type Region } from '../context/ComplianceContext';
+const eulaImageUrl = new URL('../assets/eula.jpeg', import.meta.url).href;
 
 const BASE_REGION_OPTIONS: { label: string; value: Region }[] = [
   { label: 'United States', value: 'US' },
@@ -70,7 +71,7 @@ export default function ComplianceGate() {
         </button>
         <div className="mt-4 flex justify-center">
           <img
-            src="../assets/eula.jpeg"
+            src={eulaImageUrl}
             alt="Member EULA"
             className="mx-auto w-full rounded-lg border border-white/10 object-contain"
             loading="lazy"
