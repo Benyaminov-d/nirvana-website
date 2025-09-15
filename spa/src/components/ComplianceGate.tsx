@@ -70,7 +70,7 @@ export default function ComplianceGate() {
         </button>
         <div className="mt-4 flex justify-center">
           <img
-            src="./src/assets/eula.jpeg"
+            src="../assets/eula.jpeg"
             alt="Member EULA"
             className="mx-auto w-full rounded-lg border border-white/10 object-contain"
             loading="lazy"
