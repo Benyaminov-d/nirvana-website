@@ -38,9 +38,10 @@ type TickerRibbonsProps = {
   size?: number | string;
   mode?: 'cvar95' | 'cvar99' | 'five_stars';
   country?: string;
+  staticMode?: boolean; // when true, never fetch; use placeholders
 };
 
-export default function TickerRibbons({ size = 14, mode = 'cvar95', country = 'US' }: TickerRibbonsProps) {
+export default function TickerRibbons({ size = 14, mode = 'cvar95', country = 'US', staticMode = false }: TickerRibbonsProps) {
   const { state } = useCompliance();
   const [feed, setFeed] = useState<FeedItem[]>([]);
   const [asOf, setAsOf] = useState<string>('');
@@ -70,6 +71,23 @@ export default function TickerRibbons({ size = 14, mode = 'cvar95', country = 'U
     const loadTickerData = async () => {
       try {
         setIsReady(false);
+
+        // If staticMode or compliance not accepted, do not hit backend. Use static placeholders.
+        if (staticMode || !state.accepted) {
+          const descending = [...placeholderFeed]
+            .map((it) => ({ ...it }))
+            .sort((a, b) => {
+              const av = (mode === 'cvar99' ? a.cvar99 : a.cvar95) ?? 0;
+              const bv = (mode === 'cvar99' ? b.cvar99 : b.cvar95) ?? 0;
+              return bv - av;
+            });
+          setFeed(descending);
+          setAsOf('06 Sep 2025');
+          setTitleSuffix('');
+          setIsReady(true);
+          return;
+        }
+
         const response = await fetch(`/api/ticker/feed?country=${country}&mode=${mode}&limit=20`);
         const data = await response.json();
         
@@ -105,7 +123,14 @@ export default function TickerRibbons({ size = 14, mode = 'cvar95', country = 'U
       } catch (error) {
         console.error('Failed to load ticker data:', error);
         // Fallback to placeholder data
-        setFeed(placeholderFeed);
+        const descending = [...placeholderFeed]
+          .map((it) => ({ ...it }))
+          .sort((a, b) => {
+            const av = (mode === 'cvar99' ? a.cvar99 : a.cvar95) ?? 0;
+            const bv = (mode === 'cvar99' ? b.cvar99 : b.cvar95) ?? 0;
+            return bv - av;
+          });
+        setFeed(descending);
         setAsOf('06 Sep 2025');
         setTitleSuffix('');
         setIsReady(true);
@@ -113,7 +138,7 @@ export default function TickerRibbons({ size = 14, mode = 'cvar95', country = 'U
     };
     
     loadTickerData();
-  }, [mode, country]);
+  }, [mode, country, state.accepted, staticMode]);
 
   // Update CSS custom property --rib-h when component height changes
   useEffect(() => {

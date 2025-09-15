@@ -112,10 +112,18 @@ export default function HomePage() {
     return regionToCountryMap[state.region] || 'US';
   }, [state.accepted, state.region]);
   useEffect(() => {
-    fetchProductsPreview(tickerCountry).then((res: Array<{name?:string; symbol?:string; compass_score?:number}>)=>{
-      setItems(res);
-    }).finally(()=> setLoading(false));
-  }, [tickerCountry]);
+    // Do not fetch real products until compliance is accepted
+    if (!state.accepted) {
+      setItems([]);
+      setLoading(false);
+      return;
+    }
+
+    // setLoading(true);
+    // fetchProductsPreview(tickerCountry).then((res: Array<{name?:string; symbol?:string; compass_score?:number}>)=>{
+    //   setItems(res);
+    // }).finally(()=> setLoading(false));
+  }, [tickerCountry, state.accepted]);
 
 
   // Placeholder data for Home page (no real products)
@@ -170,7 +178,7 @@ export default function HomePage() {
     {/* <div className="relative max-w-[1450px] mx-auto"> */}
       {/* Full-viewport-width ticker (ignores main padding) */}
       <div className="mt-2 mb-2" style={{ width: '100vw', marginLeft: 'calc(50% - 50vw)' }}>
-        <TickerRibbons size={20} mode="five_stars" country={tickerCountry} />
+        <TickerRibbons size={20} mode="five_stars" country={tickerCountry} staticMode={!state.accepted} />
       </div>
       <div className="w-full">
         <div className="w-full px-3 md:px-6 grid grid-cols-1 md:grid-cols-12 gap-4 pt-3 md:pt-2 pb-8 items-stretch 2xl:h-[calc(100dvh-var(--rib-h,84px))]">
