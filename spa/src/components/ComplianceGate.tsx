@@ -19,7 +19,8 @@ const BASE_REGION_OPTIONS: { label: string; value: Region }[] = [
   { label: 'United Arab Emirates', value: 'AE' },
   { label: 'Saudi Arabia', value: 'SA' },
   { label: 'South Africa', value: 'ZA' },
-  { label: 'Indonesia', value: 'ID' }
+  { label: 'Indonesia', value: 'ID' },
+  { label: 'Switzerland', value: 'CH' },
 ];
 const REGION_OPTIONS: { label: string; value: Region }[] = [
   ...[...BASE_REGION_OPTIONS].sort((a, b) => a.label.localeCompare(b.label)),
@@ -34,10 +35,10 @@ export default function ComplianceGate() {
   if (state.accepted) return null;
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 overflow-y-auto">
       <div className="absolute inset-0 bg-black/80 backdrop-blur-sm" />
-      <div className="relative glass nv-glass--inner-hairline border border-white/10 bg-black/60 rounded-2xl max-w-lg w-full p-6 text-white">
-        <h2 className="text-xl font-semibold trajan-text mb-3 text-center">Nirvana</h2>
+      <div className="relative glass nv-glass--inner-hairline border border-white/10 bg-black/60 rounded-2xl max-w-lg w-full p-6 text-white max-h-[85vh] overflow-y-auto">
+        <h2 className="text-xl font-semibold trajan-text mb-3 text-center">Only Nirvana</h2>
         {/* <p className="text-md font-semibold trajan-text mb-3 text-center">Neutral search engine for financial products - search, not advice. No pay-to-rank. No commissions. Information only; not advice or a recommendation.</p> */}
         <p className="text-sm text-gray-300 mb-4 text-center">Please select your country or region and accept the Member EULA to proceed.</p>
 
@@ -67,6 +68,15 @@ export default function ComplianceGate() {
         >
           Continue
         </button>
+        <div className="mt-4 flex justify-center">
+          <img
+            src="./src/assets/eula.jpeg"
+            alt="Member EULA"
+            className="mx-auto w-full rounded-lg border border-white/10 object-contain"
+            loading="lazy"
+            // onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = 'none'; }}
+          />
+        </div>
         <p className="text-[11px] text-gray-400 mt-3 text-center">This dialog cannot be dismissed until completed.</p>
       </div>
     </div>
