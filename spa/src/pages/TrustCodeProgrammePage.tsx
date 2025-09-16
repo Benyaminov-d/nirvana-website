@@ -86,6 +86,7 @@ export default function TrustCodeProgrammePage() {
     { title: 'Charities, NGOs & non-profits', filename: 'Charities_NGOs_and_non_profits_Nirvana_Trust_Code_programme.pdf' },
     { title: 'Foundations', filename: 'Foundations - Nirvana Trust Code programme_compressed.pdf' },
     { title: 'Associations', filename: 'Associations - Nirvana Trust Code Programme.pdf' },
+    { title: 'Universities & Colleges', filename: 'Universities_and_Colleges_Nirvana_Trust_Code_programme_compressed.pdf' },
     { title: 'Faith-based Organisations', filename: 'Faith-based Organisations - Nirvana Trust Code Programme.pdf' },
     { title: 'Enterprise Retailers', filename: 'Enterprise  Retailers - Nirvana Trust Code Programme.pdf' },
     { title: 'Credit Card Networks', filename: 'Credit Card Networks - Nirvana Trust Code Programme.pdf' },
@@ -196,6 +197,7 @@ export default function TrustCodeProgrammePage() {
             <p><strong>Charities, NGOs & non-profits</strong> – download the causes one-pager.</p>
             <p><strong>Foundations</strong> – download the foundations one-pager.</p>
             <p><strong>Associations & membership organisations</strong> – download associations one-pager.</p>
+            <p><strong>Universities & colleges</strong> – download the universities one-pager.</p>
             <p><strong>Faith-based organisations</strong> – download the faith-based one-pager.</p>
             <p><strong>Enterprise retailers</strong> – download retailer one-pager.</p>
             <p><strong>Credit card networks and issuers</strong> – Operation Causeway one-pager.</p>
