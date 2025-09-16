@@ -84,16 +84,17 @@ export default function TrustCodeProgrammePage() {
   const onePagers = [
     { title: 'Indigenous Nations & Communities', filename: 'Indigenous_Nations_and_Communities_Nirvana_Trust_Code_programme.pdf' },
     { title: 'Charities, NGOs & non-profits', filename: 'Charities_NGOs_and_non_profits_Nirvana_Trust_Code_programme.pdf' },
-    { title: 'Financial Institutions', filename: 'Financial Institutions - Nirvana Trust Code Programme.pdf' },
-    { title: 'RIA Referral Channel', filename: 'Investment_Advisers_Referral_Channel_Nirvana_Trust_Code_Programme.pdf' },
-    { title: 'RIA self-use plan (seat licence)', filename: 'Investment Advisers self-use plan (seat licence).pdf' },
-    { title: 'Private equity and conglomerates', filename: 'Conglomerates_and_Private_Equity_Nirvana_Trust_Code_Programme.pdf' },
-    { title: 'Insurers', filename: 'Insurers One - Nirvana Trust Code Programme.pdf' },
+    { title: 'Foundations', filename: 'Foundations - Nirvana Trust Code programme_compressed.pdf' },
+    { title: 'Associations', filename: 'Associations - Nirvana Trust Code Programme.pdf' },
+    { title: 'Faith-based Organisations', filename: 'Faith-based Organisations - Nirvana Trust Code Programme.pdf' },
     { title: 'Enterprise Retailers', filename: 'Enterprise  Retailers - Nirvana Trust Code Programme.pdf' },
     { title: 'Credit Card Networks', filename: 'Credit Card Networks - Nirvana Trust Code Programme.pdf' },
-    { title: 'Creators & publishers', filename: 'Creators and Publishers - Nirvana Trust Code Programme.pdf' },
-    { title: 'Associations', filename: 'Associations - Nirvana Trust Code Programme.pdf' },
-    { title: 'Faith-based Organisations', filename: 'Faith-based Organisations - Nirvana Trust Code Programme.pdf' }
+    { title: 'Financial Institutions', filename: 'Financial Institutions - Nirvana Trust Code Programme.pdf' },
+    { title: 'RIA self-use plan (seat licence)', filename: 'Investment Advisers self-use plan (seat licence).pdf' },
+    { title: 'RIA Referral Channel', filename: 'Investment_Advisers_Referral_Channel_Nirvana_Trust_Code_Programme.pdf' },
+    { title: 'Private equity and conglomerates', filename: 'Conglomerates_and_Private_Equity_Nirvana_Trust_Code_Programme.pdf' },
+    { title: 'Insurers', filename: 'Insurers One - Nirvana Trust Code Programme.pdf' },
+    { title: 'Creators & publishers', filename: 'Creators and Publishers - Nirvana Trust Code Programme.pdf' }
   ];
 
   const faqs = [
@@ -191,19 +192,21 @@ export default function TrustCodeProgrammePage() {
         <h2 className="trajan-text text-2xl md:text-3xl text-white mb-6">Who it is for — choose your one-pager</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-gray-200/95">
           <div className="space-y-3">
+            <p><strong>Indigenous Nations & Communities</strong> – download the Nations one-pager.</p>
             <p><strong>Charities, NGOs & non-profits</strong> – download the causes one-pager.</p>
-            <p><strong>Financial institutions</strong> – banks, credit unions, and other FIs – download the FI one-pager.</p>
-            <p><strong>Registered investment advisers (referral channel)</strong> – download the RIA referral one-pager.</p>
-            <p><strong>RIA self-use (seat licence)</strong> – terms for adviser-paid client seats; separate from Trust Code payouts when the RIA pays centrally.</p>
-            <p><strong>Credit card networks and issuers</strong> – Operation Causeway one-pager.</p>
+            <p><strong>Foundations</strong> – download the foundations one-pager.</p>
+            <p><strong>Associations & membership organisations</strong> – download associations one-pager.</p>
+            <p><strong>Faith-based organisations</strong> – download the faith-based one-pager.</p>
             <p><strong>Enterprise retailers</strong> – download retailer one-pager.</p>
+            <p><strong>Credit card networks and issuers</strong> – Operation Causeway one-pager.</p>
           </div>
           <div className="space-y-3">
-            <p><strong>Creators and publishers</strong> – download creators one-pager.</p>
-            <p><strong>Associations & membership organisations</strong> – download associations one-pager.</p>
+            <p><strong>Financial institutions</strong> – banks, credit unions, and other FIs – download the FI one-pager.</p>
+            <p><strong>RIA self-use (seat licence)</strong> – terms for adviser-paid client seats; separate from Trust Code payouts when the RIA pays centrally.</p>
+            <p><strong>Registered investment advisers (referral channel)</strong> – download the RIA referral one-pager.</p>
             <p><strong>Private equity & conglomerates</strong> – portfolio-company distribution model.</p>
             <p><strong>Insurers</strong> – download insurer one-pager.</p>
-            <p><strong>Faith-based organisations</strong> – download the faith-based one-pager.</p>
+            <p><strong>Creators and publishers</strong> – download creators one-pager.</p>
           </div>
         </div>
       </div>
