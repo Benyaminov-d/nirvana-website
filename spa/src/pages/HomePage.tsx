@@ -3,6 +3,12 @@ import { fetchProductsPreview } from '../services/products';
 import TickerRibbons from '../components/TickerRibbons';
 import { useCompliance } from '../context/ComplianceContext';
 
+// Feature flags for reversible UI behavior
+// Set to false to revert to normal per-country ticker behavior
+const FEATURE_FLAGS = {
+  forceUsTickerForNonUk: true,
+};
+
 // Forest Image Slider Component
 function ForestSlider() {
   const [currentImage, setCurrentImage] = useState(0);
@@ -111,6 +117,12 @@ export default function HomePage() {
     
     return regionToCountryMap[state.region] || 'US';
   }, [state.accepted, state.region]);
+
+  // Effective country considering feature flags
+  const effectiveTickerCountry = useMemo(() => {
+    if (FEATURE_FLAGS.forceUsTickerForNonUk && tickerCountry !== 'UK') return 'US';
+    return tickerCountry;
+  }, [tickerCountry]);
   useEffect(() => {
     // Do not fetch real products until compliance is accepted
     if (!state.accepted) {
@@ -178,7 +190,7 @@ export default function HomePage() {
     {/* <div className="relative max-w-[1450px] mx-auto"> */}
       {/* Full-viewport-width ticker (ignores main padding) */}
       <div className="mt-2 mb-2" style={{ width: '100vw', marginLeft: 'calc(50% - 50vw)' }}>
-        <TickerRibbons size={20} mode="five_stars" country={tickerCountry} staticMode={!state.accepted} />
+        <TickerRibbons size={20} mode="five_stars" country={effectiveTickerCountry} staticMode={!state.accepted} />
       </div>
       <div className="w-full">
         <div className="w-full px-3 md:px-6 grid grid-cols-1 md:grid-cols-12 gap-4 pt-3 md:pt-2 pb-8 items-stretch 2xl:h-[calc(100dvh-var(--rib-h,84px))]">
@@ -270,6 +282,9 @@ export default function HomePage() {
                   <div className="flex justify-end">
                     <p className="chat-bubble w-fit chat-bubble--right">Welcome to Nirvana</p>
                   </div>
+                  <div className="flex justify-end">
+                    <p className="chat-bubble w-fit chat-bubble--right">Please search by product name, symbol or by loss-limit</p>
+                  </div>
                 </div>
                 <form className="w-full flex flex-row justify-center items-center early-form glass nv-glass--inner-hairline" onSubmit={(e)=>{
                   e.preventDefault();
@@ -314,7 +329,7 @@ export default function HomePage() {
                   }, 2500);
                 }}>
                   <div className="px-5 py-4 flex-1">
-                    <input type="text" placeholder="Please search by product name, symbol or by loss-limit.." className="w-full bg-transparent outline-none text-white placeholder:text-gray-400 leading-none" disabled={mobileLocked} />
+                    <input type="text" placeholder="Ask Satya.." className="w-full bg-transparent outline-none text-white placeholder:text-gray-400 leading-none" disabled={mobileLocked} />
                   </div>
                   <div>
                     <button type="submit" disabled={mobileLocked} className="h-[40px] px-4 md:px-4 mr-2 bg-[#c19658] rounded-xl text-black hover:opacity-90 hover:bg-[#c19658]/90 disabled:opacity-60 disabled:cursor-not-allowed">
@@ -455,6 +470,9 @@ export default function HomePage() {
                   <div className="flex justify-end">
                     <p className="chat-bubble w-fit chat-bubble--right">Welcome to Nirvana</p>
                   </div>
+                  <div className="flex justify-end">
+                    <p className="chat-bubble w-fit chat-bubble--right">Please search by product name, symbol or by loss-limit</p>
+                  </div>
                 </div>
                 <form className="w-full flex flex-row justify-center items-center early-form glass nv-glass--inner-hairline" onSubmit={(e)=>{
                   e.preventDefault();
@@ -500,7 +518,7 @@ export default function HomePage() {
                   }, 2500);
                 }}>
                   <div className="px-5 py-4 flex-1">
-                    <input type="text" placeholder="Please search by product name, symbol or by loss-limit.." className="w-full bg-transparent outline-none text-white placeholder:text-gray-400 leading-none" disabled={locked} />
+                    <input type="text" placeholder="Ask Satya.." className="w-full bg-transparent outline-none text-white placeholder:text-gray-400 leading-none" disabled={locked} />
                   </div>
                   <div>
                     <button type="submit" disabled={locked} className="h-[40px] px-4 md:px-4 mr-2 bg-[#c19658] rounded-xl text-black hover:opacity-90 hover:bg-[#c19658]/90 disabled:opacity-60 disabled:cursor-not-allowed">
