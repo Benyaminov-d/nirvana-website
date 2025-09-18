@@ -10,6 +10,7 @@ import WhyPeopleUseNirvanaPage from './pages/WhyPeopleUseNirvanaPage';
 import CompassScorePage from './pages/CompassScorePage';
 import TermsPage from './pages/TermsPage';
 import TrustCodeProgrammePage from './pages/TrustCodeProgrammePage';
+import HaveACodeOrNeedOnePage from './pages/HaveACodeOrNeedOnePage';
 import WhatIsThisAllAboutPage from './pages/WhatIsThisAllAboutPage';
 import AnnualMembershipBenefitsPage from './pages/AnnualMembershipBenefitsPage';
 import WhatDoesAnnualMembershipGiveYouPage from './pages/WhatDoesAnnualMembershipGiveYouPage';
@@ -31,6 +32,7 @@ const router = createBrowserRouter([
       { path: 'what-does-an-annual-nirvana-membership-give-you', element: <WhatDoesAnnualMembershipGiveYouPage /> },
       { path: 'nirvana-membership-fees', element: <AnnualMembershipBenefitsPage /> },
       { path: 'why-do-i-need-it', element: <WhyDoINeedItPage /> },
+      { path: 'have-a-code-or-need-one', element: <HaveACodeOrNeedOnePage /> },
       { path: 'terms', element: <TermsPage /> },
       { path: 'trust-code-programme', element: <TrustCodeProgrammePage /> },
       { path: '*', element: <NotFoundPage /> },
