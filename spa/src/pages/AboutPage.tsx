@@ -1,4 +1,67 @@
+import { useLayoutEffect, useRef, useState } from 'react';
+
 export default function AboutPage() {
+  const textRef = useRef<HTMLDivElement | null>(null);
+  const leftColRef = useRef<HTMLDivElement | null>(null);
+  const [splitIndex, setSplitIndex] = useState<number>(0);
+
+  // Image definitions with aspect ratio to estimate heights accurately
+  const images: { src: string; aspect: string }[] = [
+    { src: new URL('../assets/arman/arman.jpg', import.meta.url).toString(), aspect: '3 / 4' },
+    { src: new URL('../assets/arman/arman_2.jpg', import.meta.url).toString(), aspect: '3 / 4' },
+    { src: new URL('../assets/arman/arman_3.jpg', import.meta.url).toString(), aspect: '4 / 3' },
+    { src: new URL('../assets/arman/arman_4.jpg', import.meta.url).toString(), aspect: '4 / 3' },
+    { src: new URL('../assets/arman/arman_5.jpeg', import.meta.url).toString(), aspect: '4 / 3' },
+    { src: new URL('../assets/arman/arman_6.jpeg', import.meta.url).toString(), aspect: '3 / 4' },
+    { src: new URL('../assets/arman/arman_7.jpeg', import.meta.url).toString(), aspect: '4 / 3' },
+    { src: new URL('../assets/arman/arman_8.jpeg', import.meta.url).toString(), aspect: '3 / 4' },
+    { src: new URL('../assets/arman/arman_9.jpeg', import.meta.url).toString(), aspect: '3 / 4' },
+    { src: new URL('../assets/arman/arman_10.jpeg', import.meta.url).toString(), aspect: '3 / 4' },
+    { src: new URL('../assets/arman/arman_11.jpeg', import.meta.url).toString(), aspect: '4 / 3' },
+    { src: new URL('../assets/arman/arman_12.jpeg', import.meta.url).toString(), aspect: '4 / 3' },
+    { src: new URL('../assets/arman/arman_13.jpeg', import.meta.url).toString(), aspect: '3 / 4' },
+    { src: new URL('../assets/arman/arman_14.jpeg', import.meta.url).toString(), aspect: '4 / 3' },
+  ];
+
+  useLayoutEffect(() => {
+    const recompute = () => {
+      const textHeight = textRef.current?.getBoundingClientRect().height ?? 0;
+      const leftWidth = leftColRef.current?.clientWidth ?? 0;
+
+      // On small screens there is no sidebar; push all images below the text
+      if (leftWidth === 0 || textHeight === 0) {
+        setSplitIndex(0);
+        return;
+      }
+
+      const verticalGapPx = 16; // mt-4 between cards (~1rem)
+      let consumed = 0;
+      let count = 0;
+      for (let i = 0; i < images.length; i++) {
+        const [w, h] = images[i].aspect.split(' / ').map(Number);
+        const estimatedHeight = (leftWidth * h) / w;
+        if (i > 0) consumed += verticalGapPx;
+        if (consumed + estimatedHeight <= textHeight) {
+          consumed += estimatedHeight;
+          count = i + 1;
+        } else {
+          break;
+        }
+      }
+      setSplitIndex(count);
+    };
+
+    recompute();
+    const ro = new ResizeObserver(recompute);
+    if (textRef.current) ro.observe(textRef.current);
+    if (leftColRef.current) ro.observe(leftColRef.current);
+    window.addEventListener('resize', recompute);
+    return () => {
+      ro.disconnect();
+      window.removeEventListener('resize', recompute);
+    };
+  }, []);
+
   return (
     <main className="max-w-5xl mx-auto px-4 py-8 md:py-12">
       <div className="glass nv-glass--inner-hairline border border-white/10 rounded-2xl p-6 md:p-10">
@@ -7,34 +70,35 @@ export default function AboutPage() {
         </header>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
-          <div className="md:col-span-1 order-1 md:order-none">
-            <div className="relative rounded-xl overflow-hidden border border-white/10 nv-glass--inner-hairline bg-black/20" style={{ aspectRatio: '3 / 4' }}>
-              <img src={new URL('../assets/arman/arman.jpg', import.meta.url).toString()} alt="Arman Valaquenta" className="absolute inset-0 w-full h-full object-cover object-top" />
-            </div>
-            <div className="relative rounded-xl overflow-hidden border border-white/10 nv-glass--inner-hairline bg-black/20 mt-4" style={{ aspectRatio: '3 / 4' }}>
-              <img src={new URL('../assets/arman/arman_2.jpg', import.meta.url).toString()} alt="Arman Valaquenta" className="absolute inset-0 w-full h-full object-cover object-top" />
-            </div>
-            <div className="relative rounded-xl overflow-hidden border border-white/10 nv-glass--inner-hairline bg-black/20 mt-4" style={{ aspectRatio: '4 / 3' }}>
-              <img src={new URL('../assets/arman/arman_3.jpg', import.meta.url).toString()} alt="Arman Valaquenta" className="absolute inset-0 w-full h-full object-cover object-center" />
-            </div>
-            <div className="relative rounded-xl overflow-hidden border border-white/10 nv-glass--inner-hairline bg-black/20 mt-4" style={{ aspectRatio: '4 / 3' }}>
-              <img src={new URL('../assets/arman/arman_4.jpg', import.meta.url).toString()} alt="Arman Valaquenta" className="absolute inset-0 w-full h-full object-cover object-center" />
-            </div>
-            <div className="relative rounded-xl overflow-hidden border border-white/10 nv-glass--inner-hairline bg-black/20 mt-4" style={{ aspectRatio: '4 / 3' }}>
-              <img src={new URL('../assets/arman/arman_5.jpeg', import.meta.url).toString()} alt="Arman Valaquenta" className="absolute inset-0 w-full h-full object-cover object-center" />
-            </div>
-            <div className="relative rounded-xl overflow-hidden border border-white/10 nv-glass--inner-hairline bg-black/20 mt-4" style={{ aspectRatio: '3 / 4' }}>
-              <img src={new URL('../assets/arman/arman_6.jpeg', import.meta.url).toString()} alt="Arman Valaquenta" className="absolute inset-0 w-full h-full object-cover object-center" />
-            </div>
-            <div className="relative rounded-xl overflow-hidden border border-white/10 nv-glass--inner-hairline bg-black/20 mt-4" style={{ aspectRatio: '4 / 3' }}>
-              <img src={new URL('../assets/arman/arman_7.jpeg', import.meta.url).toString()} alt="Arman Valaquenta" className="absolute inset-0 w-full h-full object-cover object-center" />
-            </div>
-            <div className="relative rounded-xl overflow-hidden border border-white/10 nv-glass--inner-hairline bg-black/20 mt-4" style={{ aspectRatio: '3 / 4' }}>
-              <img src={new URL('../assets/arman/arman_8.jpeg', import.meta.url).toString()} alt="Arman Valaquenta" className="absolute inset-0 w-full h-full object-cover object-center" />
+          <div className="md:col-span-1 order-1 md:order-none" ref={leftColRef}>
+            {images.slice(0, 8).map((img, idx) => (
+              <div key={img.src} className={idx === 0 ? 'relative rounded-xl overflow-hidden border border-white/10 nv-glass--inner-hairline bg-black/20' : 'relative rounded-xl overflow-hidden border border-white/10 nv-glass--inner-hairline bg-black/20 mt-4'} style={{ aspectRatio: img.aspect }}>
+                <img src={img.src} alt="Arman Valaquenta" className="absolute inset-0 w-full h-full object-cover object-center" />
+              </div>
+            ))}
+            <div className='md:hidden'>
+              <div key={images[8].src} className="relative rounded-xl overflow-hidden border border-white/10 nv-glass--inner-hairline bg-black/20 mt-4" style={{ aspectRatio: images[8].aspect }}>
+                <img src={images[8].src} alt="Arman Valaquenta" className="absolute inset-0 w-full h-full object-cover object-center" />
+              </div>
+              <div key={images[9].src} className="relative rounded-xl overflow-hidden border border-white/10 nv-glass--inner-hairline bg-black/20 mt-4" style={{ aspectRatio: images[9].aspect }}>
+                <img src={images[9].src} alt="Arman Valaquenta" className="absolute inset-0 w-full h-full object-cover object-center" />
+              </div>
+              <div key={images[10].src} className="relative rounded-xl overflow-hidden border border-white/10 nv-glass--inner-hairline bg-black/20 mt-4" style={{ aspectRatio: images[10].aspect }}>
+                <img src={images[10].src} alt="Arman Valaquenta" className="absolute inset-0 w-full h-full object-cover object-center" />
+              </div>
+              <div key={images[11].src} className="relative rounded-xl overflow-hidden border border-white/10 nv-glass--inner-hairline bg-black/20 mt-4" style={{ aspectRatio: images[11].aspect }}>
+                <img src={images[11].src} alt="Arman Valaquenta" className="absolute inset-0 w-full h-full object-cover object-center" />
+              </div>
+              <div key={images[12].src} className="relative rounded-xl overflow-hidden border border-white/10 nv-glass--inner-hairline bg-black/20 mt-4" style={{ aspectRatio: images[12].aspect }}>
+                <img src={images[12].src} alt="Arman Valaquenta" className="absolute inset-0 w-full h-full object-cover object-center" />
+              </div>
+              <div key={images[13].src} className="relative rounded-xl overflow-hidden border border-white/10 nv-glass--inner-hairline bg-black/20 mt-4" style={{ aspectRatio: images[13].aspect }}>
+                <img src={images[13].src} alt="Arman Valaquenta" className="absolute inset-0 w-full h-full object-cover object-center" />
+              </div>
             </div>
           </div>
 
-          <div className="md:col-span-2 text-gray-200/95 leading-relaxed">
+          <div className="md:col-span-2 text-gray-200/95 leading-relaxed" ref={textRef}>
             <div className="markdown">
               <p>
                 <a href="https://www.linkedin.com/in/armanvalaquenta/" target="_blank" rel="noopener noreferrer">Arman Valaquenta</a>
@@ -60,6 +124,26 @@ export default function AboutPage() {
               </ol>
               <p>Nirvana’s vision extends the same “re-thinking business methods” logic from wholesale FX to the entire consumer finance stack. Collaborators therefore gain exposure to a founder who has already proven he can shepherd a radical idea from whiteboard to global market dominance.</p>
               <p>In short, Arman Valaquenta pairs rare technical and artistic depth with a documented capacity to bend market structure itself - precisely the calibre of leadership required to deliver a second financial revolution through Nirvana.</p>
+            </div>
+            <div className="hidden md:grid mt-6 grid-cols-2 md:grid-cols-2 gap-4 md:gap-6">
+                <div key={images[8].src} className="relative rounded-xl overflow-hidden border border-white/10 nv-glass--inner-hairline bg-black/20" style={{ aspectRatio: images[8].aspect }}>
+                  <img src={images[8].src} alt="Arman Valaquenta" className="absolute inset-0 w-full h-full object-cover object-center" />
+                </div>
+                <div key={images[9].src} className="relative rounded-xl overflow-hidden border border-white/10 nv-glass--inner-hairline bg-black/20" style={{ aspectRatio: images[9].aspect }}>
+                  <img src={images[9].src} alt="Arman Valaquenta" className="absolute inset-0 w-full h-full object-cover object-center" />
+                </div>
+                <div key={images[10].src} className="relative rounded-xl overflow-hidden border border-white/10 nv-glass--inner-hairline bg-black/20" style={{ aspectRatio: images[10].aspect }}>
+                  <img src={images[10].src} alt="Arman Valaquenta" className="absolute inset-0 w-full h-full object-cover object-center" />
+                </div>
+                <div key={images[11].src} className="relative rounded-xl overflow-hidden border border-white/10 nv-glass--inner-hairline bg-black/20" style={{ aspectRatio: images[11].aspect }}>
+                  <img src={images[11].src} alt="Arman Valaquenta" className="absolute inset-0 w-full h-full object-cover object-center" />
+                </div>
+                <div key={images[12].src} className="relative rounded-xl overflow-hidden border border-white/10 nv-glass--inner-hairline bg-black/20" style={{ aspectRatio: images[12].aspect }}>
+                  <img src={images[12].src} alt="Arman Valaquenta" className="absolute inset-0 w-full h-full object-cover object-center" />
+                </div>
+                <div key={images[13].src} className="relative rounded-xl overflow-hidden border border-white/10 nv-glass--inner-hairline bg-black/20" style={{ aspectRatio: images[13].aspect }}>
+                  <img src={images[13].src} alt="Arman Valaquenta" className="absolute inset-0 w-full h-full object-cover object-center" />
+                </div>
             </div>
           </div>
         </div>
