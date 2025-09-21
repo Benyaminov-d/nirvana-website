@@ -288,7 +288,7 @@ export default function HomePage() {
                     <p className="chat-bubble w-fit chat-bubble--right">Welcome to Nirvana</p>
                   </div>
                   <div className="flex justify-end">
-                    <p className="chat-bubble w-fit chat-bubble--right">Please search by product name, symbol or by loss-limit</p>
+                    <p className="chat-bubble w-fit chat-bubble--right">Begin anywhere</p>
                   </div>
                 </div>
                 <form className="w-full flex flex-row justify-center items-center early-form glass nv-glass--inner-hairline" onSubmit={(e)=>{
@@ -334,7 +334,7 @@ export default function HomePage() {
                   }, 2500);
                 }}>
                   <div className="px-5 py-4 flex-1">
-                    <input type="text" placeholder="Ask Satya.." className="w-full bg-transparent outline-none text-white placeholder:text-gray-400 leading-none" disabled={mobileLocked} />
+                    <input type="text" placeholder="Talk.." className="w-full bg-transparent outline-none text-white placeholder:text-gray-400 leading-none" disabled={mobileLocked} />
                   </div>
                   <div>
                     <button type="submit" disabled={mobileLocked} className="h-[40px] px-4 md:px-4 mr-2 bg-[#c19658] rounded-xl text-black hover:opacity-90 hover:bg-[#c19658]/90 disabled:opacity-60 disabled:cursor-not-allowed">
@@ -485,7 +485,7 @@ export default function HomePage() {
                     <p className="chat-bubble w-fit chat-bubble--right">Welcome to Nirvana</p>
                   </div>
                   <div className="flex justify-end">
-                    <p className="chat-bubble w-fit chat-bubble--right">Please search by product name, symbol or by loss-limit</p>
+                    <p className="chat-bubble w-fit chat-bubble--right">Begin anywhere</p>
                   </div>
                 </div>
                 <form className="w-full flex flex-row justify-center items-center early-form glass nv-glass--inner-hairline" onSubmit={(e)=>{
@@ -532,7 +532,7 @@ export default function HomePage() {
                   }, 2500);
                 }}>
                   <div className="px-5 py-4 flex-1">
-                    <input type="text" placeholder="Ask Satya.." className="w-full bg-transparent outline-none text-white placeholder:text-gray-400 leading-none" disabled={locked} />
+                    <input type="text" placeholder="Talk.." className="w-full bg-transparent outline-none text-white placeholder:text-gray-400 leading-none" disabled={locked} />
                   </div>
                   <div>
                     <button type="submit" disabled={locked} className="h-[40px] px-4 md:px-4 mr-2 bg-[#c19658] rounded-xl text-black hover:opacity-90 hover:bg-[#c19658]/90 disabled:opacity-60 disabled:cursor-not-allowed">
