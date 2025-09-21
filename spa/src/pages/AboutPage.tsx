@@ -154,6 +154,11 @@ export default function AboutPage() {
               <p><strong>A proven architect of market-changing infrastructure</strong></p>
               <p>Arman Valaquenta is a mathematician, artist, ice and mountain climber, with a career that spans 35 years at the intersection of finance, theoretical computer science, mathematics, art and exploration of the natural world and humanity.</p>
               <p>His objective is to save forests and animal habitats and improve the human condition through examining commonly held assumptions and seeing if we can do better by each other, and the home planet.</p>
+              <p>
+                <a href="https://www.youtube.com/@essea-art?si=T715FSmZZ8pnqQi2" target="_blank" rel="noopener noreferrer">YouTube channel</a>
+                {' '}·{' '}
+                <a href="https://www.essea.art" target="_blank" rel="noopener noreferrer">essea.art</a>
+              </p>
               <p>In sciences and business, he is best known in global capital markets for inventing the client-to-client foreign-exchange trading model that now routes roughly <strong>70 percent of the world’s USD 7.5 trillion</strong> daily FX turnover. Subject to 15 patents, the business method of enabling counterparties to trade FX without direct credit lines was a revolution, marking an early decentralisation milestone that presaged many of the principles later embodied in decentralised finance (DeFi).</p>
               <p>In 2006, the Chinese Central Bank – the People’s Bank of China, recommended his technology to power a global FX exchange to be based in Shanghai, as the patented decentralised limit order books architecture could enable the central bank to selectively curb and cool foreign speculative activity in the national currency. His technology is currently embedded in Deutsche Börse FX franchise.</p>
 
