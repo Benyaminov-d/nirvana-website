@@ -21,7 +21,7 @@ export default function AboutPage() {
     { src: new URL('../assets/arman/arman_12.jpeg', import.meta.url).toString(), aspect: '4 / 3' },
     { src: new URL('../assets/arman/arman_13.jpeg', import.meta.url).toString(), aspect: '3 / 4' },
     { src: new URL('../assets/arman/arman_14.jpeg', import.meta.url).toString(), aspect: '4 / 3' },
-    { src: new URL('../assets/arman/arman_15.jpg', import.meta.url).toString(), aspect: '4 / 3' },
+    { src: new URL('../assets/arman/arman_15.jpeg', import.meta.url).toString(), aspect: '4 / 3' },
     { src: new URL('../assets/arman/arman_16.jpg', import.meta.url).toString(), aspect: '3 / 4' },
     { src: new URL('../assets/arman/arman_17.jpg', import.meta.url).toString(), aspect: '3 / 4' },
     { src: new URL('../assets/arman/arman_18.jpeg', import.meta.url).toString(), aspect: '4 / 3' },
@@ -81,7 +81,10 @@ export default function AboutPage() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
           <div className="md:col-span-1 order-1 md:order-none" ref={leftColRef}>
-            {images.slice(0, 8).map((img, idx) => (
+            <div key={images[0].src} className='hidden md:block mb-4 relative rounded-xl overflow-hidden border border-white/10 nv-glass--inner-hairline bg-black/20' style={{ aspectRatio: images[0].aspect }}>
+              <img src={images[0].src} alt="Arman Valaquenta" className="absolute inset-0 w-full h-full object-cover object-center" />
+            </div>
+            {images.slice(1, 8).map((img, idx) => (
               <div key={img.src} className={idx === 0 ? 'relative rounded-xl overflow-hidden border border-white/10 nv-glass--inner-hairline bg-black/20' : 'relative rounded-xl overflow-hidden border border-white/10 nv-glass--inner-hairline bg-black/20 mt-4'} style={{ aspectRatio: img.aspect }}>
                 <img src={img.src} alt="Arman Valaquenta" className="absolute inset-0 w-full h-full object-cover object-center" />
               </div>
@@ -152,19 +155,23 @@ export default function AboutPage() {
               </p>
 
               <p><strong>A proven architect of market-changing infrastructure</strong></p>
+              <div className="md:hidden mb-4">
+                <div key={images[0].src} className="relative rounded-xl overflow-hidden border border-white/10 nv-glass--inner-hairline bg-black/20" style={{ aspectRatio: images[0].aspect }}>
+                  <img src={images[0].src} alt="Arman Valaquenta" className="absolute inset-0 w-full h-full object-cover object-center" />
+                </div>
+              </div>
               <p>Arman Valaquenta is a mathematician, artist, ice and mountain climber, with a career that spans 35 years at the intersection of finance, theoretical computer science, mathematics, art and exploration of the natural world and humanity.</p>
               <p>His objective is to save forests and animal habitats and improve the human condition through examining commonly held assumptions and seeing if we can do better by each other, and the home planet.</p>
-              <p>
-                <a href="https://www.youtube.com/@essea-art?si=T715FSmZZ8pnqQi2" target="_blank" rel="noopener noreferrer">Arman's Youtube channel</a>
-                {' '}·{' '}
-                <a href="https://www.essea.art" target="_blank" rel="noopener noreferrer">Arman's Photographic arts</a>
-              </p>
+              <div className="flex flex-row flex-wrap gap-4 mb-4">
+                <a href="https://www.youtube.com/@essea-art?si=T715FSmZZ8pnqQi2" role="button" target="_blank" rel="noopener noreferrer" className="glass text-md trajan-text nv-glass--inner-hairline border border-white/10 rounded-lg px-3 py-2 inline-block !text-white !hover:text-gray-200 text-center !no-underline">Arman's Youtube channel</a>
+                <a href="https://www.essea.art" role="button" target="_blank" rel="noopener noreferrer" className="glass text-md trajan-text nv-glass--inner-hairline border border-white/10 rounded-lg px-3 py-2 inline-block !text-white !hover:text-gray-200 text-center !no-underline">Arman's Photographic arts</a>
+                <a href="https://www.essea.art/audiobook-witness/" role="button" target="_blank" rel="noopener noreferrer" className="glass text-md trajan-text nv-glass--inner-hairline border border-white/10 rounded-lg px-3 py-2 inline-block !text-white !hover:text-gray-200 text-center !no-underline">Audiobook - "Witness"</a>
+              </div>
               <p>In sciences and business, he is best known in global capital markets for inventing the client-to-client foreign-exchange trading model that now routes roughly <strong>70 percent of the world’s USD 7.5 trillion</strong> daily FX turnover. Subject to 15 patents, the business method of enabling counterparties to trade FX without direct credit lines was a revolution, marking an early decentralisation milestone that presaged many of the principles later embodied in decentralised finance (DeFi).</p>
               <p>In 2006, the Chinese Central Bank – the People’s Bank of China, recommended his technology to power a global FX exchange to be based in Shanghai, as the patented decentralised limit order books architecture could enable the central bank to selectively curb and cool foreign speculative activity in the national currency. His technology is currently embedded in Deutsche Börse FX franchise.</p>
 
               <h3><strong>A broader lens: art, systems thinking, and human-centred design</strong></h3>
               <p>Arman is also the first ever <strong>brand ambassador of ALPA Cameras of Switzerland</strong>, recognised for his 8,000-kilometre solo photographic journey across the sub-Arctic forests of Canada. The same obsession with precision optics informs his approach to software architecture: remove distortion, let the subject speak for itself.</p>
-              <p>His art is at <a href="http://www.essea.art" target="_blank" rel="noopener noreferrer">Arman's Photographic arts</a> and his YouTube channel is: <a href="https://www.youtube.com/@essea-art" target="_blank" rel="noopener noreferrer">Arman's Youtube channel</a></p>
 
               <h3><strong>Why this matters for Nirvana</strong></h3>
               <p>Having already rewritten the rules of inter-bank currency trading, Arman now applies thirty-five years of systems-level innovation to <strong>Nirvana</strong>, a neutral financial network designed to <em>align investment for 2.6 billion people</em>. His track record demonstrates an ability to:</p>

@@ -236,7 +236,7 @@ export default function HomePage() {
           {/* Mobile-only navigation buttons */}
           <div className="md:hidden col-span-1 px-2 mt-8 mb-6">
             <div className="flex flex-col gap-3">
-              <a href="/what-is-this-all-about" role="button" className="glass trajan-text nv-glass--inner-hairline border border-white/10 rounded-lg px-3 py-2 inline-block text-gray-200 hover:text-white text-center">What is this all about - a message from the founder</a>
+              <a href="/what-is-this-all-about" role="button" className="glass trajan-text nv-glass--inner-hairline border border-white/10 rounded-lg px-3 py-2 inline-block text-gray-200 hover:text-white text-center">Message from the founder</a>
               <a href="/why-people-use-nirvana" role="button" className="glass trajan-text nv-glass--inner-hairline border border-white/10 rounded-lg px-3 py-2 inline-block text-gray-200 hover:text-white text-center">Why do we exist</a>
               <a href="/about" role="button" className="glass trajan-text nv-glass--inner-hairline border border-white/10 rounded-lg px-3 py-2 inline-block text-gray-200 hover:text-white text-center">About us</a>
               <a href="/have-a-code-or-need-one" role="button" className="glass trajan-text nv-glass--inner-hairline border border-white/10 rounded-lg px-3 py-2 inline-block text-gray-200 hover:text-white text-center">
@@ -244,7 +244,6 @@ export default function HomePage() {
                 <div>You save 10% & we donate another 10%</div>
                 <div>to your chosen organisation</div>
               </a>
-              <a href="/trust-code-programme" role="button" className="glass trajan-text nv-glass--inner-hairline border border-white/10 rounded-lg px-3 py-2 inline-block text-gray-200 hover:text-white text-center">Trust Code Programme - Organisations</a>
             </div>
           </div>
 
@@ -287,9 +286,9 @@ export default function HomePage() {
                   <div className="flex justify-end">
                     <p className="chat-bubble w-fit chat-bubble--right">Welcome to Nirvana</p>
                   </div>
-                  <div className="flex justify-end">
+                  {/* <div className="flex justify-end">
                     <p className="chat-bubble w-fit chat-bubble--right">Begin anywhere</p>
-                  </div>
+                  </div> */}
                 </div>
                 <form className="w-full flex flex-row justify-center items-center early-form glass nv-glass--inner-hairline" onSubmit={(e)=>{
                   e.preventDefault();
@@ -414,6 +413,7 @@ export default function HomePage() {
             </div>
             <div className="flex flex-col max-w-[400px] w-full">
               <div className="flex flex-col max-w-[400px] gap-4">
+                <a href="/trust-code-programme" role="button" className="glass nv-glass--inner-hairline border border-white/10 rounded-lg px-3 py-2 inline-block text-gray-200 hover:text-white">Trust Code Programme - Organisations</a>
                 <a href="/what-does-an-annual-nirvana-membership-give-you" role="button" className="glass nv-glass--inner-hairline border border-white/10 rounded-lg px-3 py-2 inline-block text-gray-200 hover:text-white">What does an annual Nirvana membership give you?</a>
                 <a href="/nirvana-membership-fees" role="button" className="glass nv-glass--inner-hairline border border-white/10 rounded-lg px-3 py-2 inline-block text-gray-200 hover:text-white">Nirvana membership fees</a>
                 <a href="/what-is-compass-score" role="button" className="glass nv-glass--inner-hairline border border-white/10 rounded-lg px-3 py-2 inline-block text-gray-200 hover:text-white">The Compass Score</a>
@@ -430,8 +430,9 @@ export default function HomePage() {
             <div className="hidden md:flex flex-col row-span-1 gap-4 w-full justify-center content-center">
               <div className="flex flex-row flex-wrap gap-4 justify-center">
                 <a href="/what-is-this-all-about" role="button" className="glass text-lg trajan-text nv-glass--inner-hairline border border-white/10 rounded-lg px-4 py-2 inline-block h-auto self-start text-white hover:text-gray-200 text-center">
-                  <div>What is this all about</div>
-                  <div>a message from the founder</div>
+                  <div>Message from the founder</div>
+                  {/* <div>What is this all about</div>
+                  <div>a message from the founder</div> */}
                 </a>
               </div>
               <div className="flex flex-row flex-wrap gap-4 justify-center">
@@ -444,9 +445,6 @@ export default function HomePage() {
                   <div>You save 10% & we donate another 10%</div>
                   <div>to your chosen organisation</div>
                 </a>
-              </div>
-              <div className="flex flex-row flex-wrap gap-4 justify-center">
-                <a href="/trust-code-programme" role="button" className="glass text-lg trajan-text nv-glass--inner-hairline border border-white/10 rounded-lg px-4 py-2 inline-block h-auto self-start text-white hover:text-gray-200 text-center">Trust Code Programme - Organisations</a>
               </div>
             </div>
             <div className="glass mt-12 md:mt-0 
@@ -484,9 +482,9 @@ export default function HomePage() {
                   <div className="flex justify-end">
                     <p className="chat-bubble w-fit chat-bubble--right">Welcome to Nirvana</p>
                   </div>
-                  <div className="flex justify-end">
+                  {/* <div className="flex justify-end">
                     <p className="chat-bubble w-fit chat-bubble--right">Begin anywhere</p>
-                  </div>
+                  </div> */}
                 </div>
                 <form className="w-full flex flex-row justify-center items-center early-form glass nv-glass--inner-hairline" onSubmit={(e)=>{
                   e.preventDefault();
@@ -532,7 +530,7 @@ export default function HomePage() {
                   }, 2500);
                 }}>
                   <div className="px-5 py-4 flex-1">
-                    <input type="text" placeholder="Talk.." className="w-full bg-transparent outline-none text-white placeholder:text-gray-400 leading-none" disabled={locked} />
+                    <input type="text" placeholder="Say anything.." className="w-full bg-transparent outline-none text-white placeholder:text-gray-400 leading-none" disabled={locked} />
                   </div>
                   <div>
                     <button type="submit" disabled={locked} className="h-[40px] px-4 md:px-4 mr-2 bg-[#c19658] rounded-xl text-black hover:opacity-90 hover:bg-[#c19658]/90 disabled:opacity-60 disabled:cursor-not-allowed">
@@ -553,9 +551,9 @@ export default function HomePage() {
               <div className="grid grid-cols-2 text-[11px] uppercase tracking-wider text-gray-400 mb-3">
                 <div>
                 <div>Search results</div>
-                  <div className="text-gray-300 normal-case tracking-normal mt-1" style={{ color: '#ff7f50' }}>
+                  {/* <div className="text-gray-300 normal-case tracking-normal mt-1" style={{ color: '#ff7f50' }}>
                     No AI used in search
-                  </div>
+                  </div> */}
                 </div>
                 <div className="text-right justify-self-end">
                   <p className='block'>Search relevance index</p>
@@ -585,6 +583,7 @@ export default function HomePage() {
         <div className="md:hidden px-3 pb-5">
           <div className="flex flex-col gap-4 items-stretch">
             <div className="flex flex-col gap-3">
+              <a href="/trust-code-programme" role="button" className="glass nv-glass--inner-hairline border border-white/10 rounded-lg px-3 py-2 block w-full text-gray-200 hover:text-white text-center">Trust Code Programme - Organisations</a>
               {/* <a href="/about" className="glass nv-glass--inner-hairline border border-white/10 rounded-lg px-3 py-2 block w-full text-gray-200 hover:text-white text-center">About us</a> */}
               <a href="/what-does-an-annual-nirvana-membership-give-you" role="button" className="glass nv-glass--inner-hairline border border-white/10 rounded-lg px-3 py-2 block w-full text-gray-200 hover:text-white text-center">What does an annual Nirvana membership give you?</a>
               <a href="/nirvana-membership-fees" role="button" className="glass nv-glass--inner-hairline border border-white/10 rounded-lg px-3 py-2 block w-full text-gray-200 hover:text-white text-center">Nirvana membership fees</a>
