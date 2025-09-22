@@ -190,9 +190,9 @@ export default function HomePage() {
     <div className="relative max-w-full mx-auto">
     {/* <div className="relative max-w-[1450px] mx-auto"> */}
       {/* Full-viewport-width ticker (ignores main padding) */}
-      <div className="mt-2 mb-2" style={{ width: '100vw', marginLeft: 'calc(50% - 50vw)' }}>
+      {/* <div className="mt-2 mb-2" style={{ width: '100vw', marginLeft: 'calc(50% - 50vw)' }}>
         <TickerRibbons size={20} mode="five_stars" country={effectiveTickerCountry} staticMode={!state.accepted} />
-      </div>
+      </div> */}
       <div className="w-full">
         <div className="w-full px-3 md:px-6 grid grid-cols-1 md:grid-cols-12 gap-4 pt-3 md:pt-2 pb-8 items-stretch 2xl:h-[calc(100dvh-var(--rib-h,84px))]">
           {/* Mobile-only WSJ quote */}
@@ -351,9 +351,9 @@ export default function HomePage() {
               <div className="grid grid-cols-2 text-[11px] uppercase tracking-wider text-gray-400 mb-3">
                 <div>
                   <div>Search results</div>
-                  <div className="text-gray-300 normal-case tracking-normal mt-1" style={{ color: '#ff7f50' }}>
+                  {/* <div className="text-gray-300 normal-case tracking-normal mt-1" style={{ color: '#ff7f50' }}>
                     No AI used in search
-                  </div>
+                  </div> */}
                 </div>
                 <div className="text-right justify-self-end">
                   <p className='block'>Search relevance index</p>
