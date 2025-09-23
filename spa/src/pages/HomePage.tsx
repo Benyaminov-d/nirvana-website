@@ -206,17 +206,22 @@ export default function HomePage() {
             <img
               src={new URL('../assets/charities/1.jpg', import.meta.url).toString()}
               alt="The Dzunuk'wa Society"
-              className="h-24 mr-10 md:mr-16 w-auto object-contain"
+              className="md:h-24 h-20 mr-6 md:mr-16 w-auto object-contain"
             />
             <img
               src={new URL('../assets/charities/2.jpg', import.meta.url).toString()}
               alt="Sea Shepherd"
-              className="h-24 mr-10 md:mr-16 w-auto object-contain"
+              className="md:h-24 h-20 mr-6 md:mr-16 w-auto object-contain"
             />
             <img
               src={new URL('../assets/charities/3.jpg', import.meta.url).toString()}
               alt="Rainforest Flying Squad"
-              className="h-24 mr-10 md:mr-16 w-auto object-contain"
+              className="md:h-24 h-20 mr-6 md:mr-16 w-auto object-contain"
+            />
+            <img
+              src={new URL('../assets/charities/4.jpg', import.meta.url).toString()}
+              alt="PETA"
+              className="md:h-24 h-20 mr-6 md:mr-16 w-auto object-contain"
             />
           </div>
         </div>
