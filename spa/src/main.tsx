@@ -27,6 +27,7 @@ const router = createBrowserRouter([
       { path: 'about', element: <AboutPage /> },
       { path: 'member-eula', element: <MemberEulaPage /> },
       { path: 'why-people-use-nirvana', element: <WhyPeopleUseNirvanaPage /> },
+      { path: 'why-do-we-exist', element: <WhyPeopleUseNirvanaPage /> },
       { path: 'what-is-compass-score', element: <CompassScorePage /> },
       { path: 'what-is-this-all-about', element: <WhatIsThisAllAboutPage /> },
       { path: 'what-does-an-annual-nirvana-membership-give-you', element: <WhatDoesAnnualMembershipGiveYouPage /> },
