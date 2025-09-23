@@ -193,8 +193,38 @@ export default function HomePage() {
       {/* <div className="mt-2 mb-2" style={{ width: '100vw', marginLeft: 'calc(50% - 50vw)' }}>
         <TickerRibbons size={20} mode="five_stars" country={effectiveTickerCountry} staticMode={!state.accepted} />
       </div> */}
+      {/* Nirvana supports - inside first row, no extra vertical gap */}
+      <div className="px-3 md:px-6 pt-2 mt-6 mb-14 md:max-w-[85%] mx-auto">
+        <span className="block md:hidden mb-6 whitespace-nowrap text-gray-200 trajan-text uppercase text-2xl">
+          Nirvana supports:
+        </span>
+        <div className="inline-flex mt-2 w-full items-center gap-5 justify-center">
+          <span className="hidden md:block whitespace-nowrap text-gray-200 trajan-text uppercase text-sm md:text-2xl">
+            Nirvana supports:
+          </span>
+          <div className='flex w-full'>
+            <img
+              src={new URL('../assets/charities/1.jpg', import.meta.url).toString()}
+              alt="The Dzunuk'wa Society"
+              className="h-24 mr-10 md:mr-16 w-auto object-contain"
+            />
+            <img
+              src={new URL('../assets/charities/2.jpg', import.meta.url).toString()}
+              alt="Sea Shepherd"
+              className="h-24 mr-10 md:mr-16 w-auto object-contain"
+            />
+            <img
+              src={new URL('../assets/charities/3.jpg', import.meta.url).toString()}
+              alt="Rainforest Flying Squad"
+              className="h-24 mr-10 md:mr-16 w-auto object-contain"
+            />
+          </div>
+        </div>
+      </div>
+
       <div className="w-full">
         <div className="w-full px-3 md:px-6 grid grid-cols-1 md:grid-cols-12 gap-4 pt-3 md:pt-2 pb-8 items-stretch 2xl:h-[calc(100dvh-var(--rib-h,84px))]">
+          
           {/* Mobile-only WSJ quote */}
           <div className="md:hidden col-span-1 text-center px-2 mt-24 mb-6">
             <div className="trajan-text text-2xl text-white">
@@ -425,21 +455,22 @@ export default function HomePage() {
           </div>
 
           {/* Center chat column */}
-          <div className="hidden md:grid md:grid-rows-[5fr_7fr] gap-3 md:col-span-5 md:h-full md:min-h-0">
+          <div className="hidden md:grid md:grid-rows-[auto_1fr] gap-2 md:col-span-5 md:h-full md:min-h-0">
             {/* Desktop only buttons - hidden on mobile */}
-            <div className="hidden md:flex flex-col row-span-1 gap-4 w-full justify-center content-center">
-              <div className="flex flex-row flex-wrap gap-4 justify-center">
+            <div className="hidden md:flex flex-col row-span-1 gap-3 w-full justify-start content-start">
+
+              <div className="flex flex-row flex-wrap gap-3 justify-center">
                 <a href="/what-is-this-all-about" role="button" className="glass text-lg trajan-text nv-glass--inner-hairline border border-white/10 rounded-lg px-4 py-2 inline-block h-auto self-start text-white hover:text-gray-200 text-center">
                   <div>Message from the founder</div>
                   {/* <div>What is this all about</div>
                   <div>a message from the founder</div> */}
                 </a>
               </div>
-              <div className="flex flex-row flex-wrap gap-4 justify-center">
+              <div className="flex flex-row flex-wrap gap-2 justify-center">
                 <a href="/why-people-use-nirvana" role="button" className="glass text-lg trajan-text nv-glass--inner-hairline border border-white/10 rounded-lg px-4 py-2 inline-block h-auto self-start text-white hover:text-gray-200 text-center">Why do we exist</a>
                 <a href="/about" role="button" className="glass text-lg trajan-text nv-glass--inner-hairline border border-white/10 rounded-lg px-4 py-2 inline-block h-auto self-start text-white hover:text-gray-200 text-center">About us</a>
               </div>
-              <div className="flex flex-row flex-wrap gap-4 justify-center">
+              <div className="flex flex-row flex-wrap gap-2 justify-center mb-20">
                 <a href="/have-a-code-or-need-one" role="button" className="glass text-lg trajan-text nv-glass--inner-hairline border border-white/10 rounded-lg px-4 py-2 inline-block h-auto self-start text-white hover:text-gray-200 text-center">
                   <div>Trust Code programme</div>
                   <div>You save 10% & we donate another 10%</div>
@@ -447,11 +478,11 @@ export default function HomePage() {
                 </a>
               </div>
             </div>
-            <div className="glass mt-12 md:mt-0 
+            <div className="glass mt-6 md:mt-0 
                             bg-black/10 md:row-span-1 w-full 
                             md:h-full md:min-h-0 justify-start 
                             nv-glass--inner-hairline early-form 
-                            px-4 py-6 border border-white/10 
+                            px-4 py-5 border border-white/10 
                             rounded-2xl flex flex-col md:overflow-hidden">
               <div className="flex gap-2 mb-3 items-start">
                 <p className="text-white !text-4xl trajan-text">Proximity</p>
