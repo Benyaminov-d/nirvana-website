@@ -186,6 +186,15 @@ export default function HomePage() {
     return { names, scores };
   }, [items.length]);
 
+  // Charities images (used for desktop row and mobile marquee)
+  const charities = useMemo(() => ([
+    { src: new URL('../assets/charities/1.jpg', import.meta.url).toString(), alt: "The Dzunuk'wa Society" },
+    { src: new URL('../assets/charities/2.jpg', import.meta.url).toString(), alt: 'Sea Shepherd' },
+    { src: new URL('../assets/charities/3.jpg', import.meta.url).toString(), alt: 'Rainforest Flying Squad' },
+    { src: new URL('../assets/charities/4.jpg', import.meta.url).toString(), alt: 'PETA' },
+    { src: new URL('../assets/charities/5.jpg', import.meta.url).toString(), alt: 'PETA' },
+  ]), []);
+
   return (
     <div className="relative max-w-full mx-auto">
     {/* <div className="relative max-w-[1450px] mx-auto"> */}
@@ -202,31 +211,61 @@ export default function HomePage() {
           <span className="hidden md:block whitespace-nowrap text-gray-200 trajan-text uppercase text-sm md:text-2xl">
             Nirvana supports:
           </span>
-          <div className='flex w-full'>
-            <img
-              src={new URL('../assets/charities/1.jpg', import.meta.url).toString()}
-              alt="The Dzunuk'wa Society"
-              className="md:h-24 h-16 mr-6 md:mr-16 w-auto object-contain"
+          {/* Desktop: static row */}
+          <div className='hidden md:flex w-full'>
+            {charities.map((c, idx) => (
+              <img
+                key={idx}
+                src={c.src}
+                alt={c.alt}
+                className="md:h-24 h-16 mr-6 md:mr-16 w-auto object-contain"
+              />
+            ))}
+          </div>
+          {/* Mobile: infinite marquee with fading edges */}
+          <div className="relative md:hidden overflow-hidden" style={{ width: '100vw', marginLeft: 'calc(50% - 50vw)', marginRight: 'calc(50% - 50vw)' }}>
+            {/* Keyframes for marquee (scoped by name) */}
+            <style>
+              {`
+                @keyframes nv-charities-marquee {
+                  0% { transform: translateX(-50%); }
+                  100% { transform: translateX(0); }
+                }
+              `}
+            </style>
+            <div
+              className="flex items-center whitespace-nowrap"
+              style={{ animation: 'nv-charities-marquee 28s linear infinite' }}
+            >
+              <div className="flex items-center shrink-0">
+                {charities.map((c, idx) => (
+                  <img
+                    key={`m1-${idx}`}
+                    src={c.src}
+                    alt={c.alt}
+                    className="h-20 mr-6 w-auto object-contain"
+                  />
+                ))}
+              </div>
+              <div className="flex items-center shrink-0" aria-hidden="true">
+                {charities.map((c, idx) => (
+                  <img
+                    key={`m2-${idx}`}
+                    src={c.src}
+                    alt={c.alt}
+                    className="h-20 mr-6 w-auto object-contain"
+                  />
+                ))}
+              </div>
+            </div>
+            {/* Fading edges overlays */}
+            <div
+              className="pointer-events-none absolute inset-y-0 left-0 w-10"
+              style={{ background: 'linear-gradient(to right, rgba(0,0,0,0.85), rgba(0,0,0,0))' }}
             />
-            <img
-              src={new URL('../assets/charities/2.jpg', import.meta.url).toString()}
-              alt="Sea Shepherd"
-              className="md:h-24 h-16 mr-6 md:mr-16 w-auto object-contain"
-            />
-            <img
-              src={new URL('../assets/charities/3.jpg', import.meta.url).toString()}
-              alt="Rainforest Flying Squad"
-              className="md:h-24 h-16 mr-6 md:mr-16 w-auto object-contain"
-            />
-            <img
-              src={new URL('../assets/charities/4.jpg', import.meta.url).toString()}
-              alt="PETA"
-              className="md:h-24 h-16 mr-6 md:mr-16 w-auto object-contain"
-            />
-            <img
-              src={new URL('../assets/charities/5.jpg', import.meta.url).toString()}
-              alt="PETA"
-              className="md:h-24 h-16 mr-6 md:mr-16 w-auto object-contain"
+            <div
+              className="pointer-events-none absolute inset-y-0 right-0 w-10"
+              style={{ background: 'linear-gradient(to left, rgba(0,0,0,0.85), rgba(0,0,0,0))' }}
             />
           </div>
         </div>
