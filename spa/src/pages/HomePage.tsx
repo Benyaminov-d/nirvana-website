@@ -279,6 +279,7 @@ export default function HomePage() {
                 <div>You save 10% & we donate another 10%</div>
                 <div>to your chosen organisation</div>
               </a>
+              <a href="/founder-statement-on-cryptocurrencies" role="button" className="glass trajan-text nv-glass--inner-hairline border border-white/10 rounded-lg px-3 py-2 inline-block text-gray-200 hover:text-white text-center">Founder statement on cryptocurrencies</a>
             </div>
           </div>
 
@@ -475,12 +476,15 @@ export default function HomePage() {
                 <a href="/why-do-we-exist" role="button" className="glass text-lg trajan-text nv-glass--inner-hairline border border-white/10 rounded-lg px-4 py-2 inline-block h-auto self-start text-white hover:text-gray-200 text-center">Why do we exist</a>
                 <a href="/about" role="button" className="glass text-lg trajan-text nv-glass--inner-hairline border border-white/10 rounded-lg px-4 py-2 inline-block h-auto self-start text-white hover:text-gray-200 text-center">About us</a>
               </div>
-              <div className="flex flex-row flex-wrap gap-2 justify-center mb-20">
+              <div className="flex flex-row flex-wrap gap-2 justify-center">
                 <a href="/have-a-code-or-need-one" role="button" className="glass text-lg trajan-text nv-glass--inner-hairline border border-white/10 rounded-lg px-4 py-2 inline-block h-auto self-start text-white hover:text-gray-200 text-center">
                   <div>Trust Code programme</div>
                   <div>You save 10% & we donate another 10%</div>
                   <div>to your chosen organisation</div>
                 </a>
+              </div>
+              <div className="flex flex-row flex-wrap gap-2 justify-center mb-20">
+                <a href="/founder-statement-on-cryptocurrencies" role="button" className="glass text-lg trajan-text nv-glass--inner-hairline border border-white/10 rounded-lg px-4 py-2 inline-block h-auto self-start text-white hover:text-gray-200 text-center">Founder statement on cryptocurrencies</a>
               </div>
             </div>
             <div className="glass mt-6 md:mt-0 

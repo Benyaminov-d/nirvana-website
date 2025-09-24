@@ -15,6 +15,10 @@ import WhatIsThisAllAboutPage from './pages/WhatIsThisAllAboutPage';
 import AnnualMembershipBenefitsPage from './pages/AnnualMembershipBenefitsPage';
 import WhatDoesAnnualMembershipGiveYouPage from './pages/WhatDoesAnnualMembershipGiveYouPage';
 import WhyDoINeedItPage from './pages/WhyDoINeedItPage';
+import CryptoPage from './pages/CryptoPage';
+import BitcoinStatementPage from './pages/BitcoinStatementPage';
+import EtherStatementPage from './pages/EtherStatementPage';
+import StablecoinStatementPage from './pages/StablecoinStatementPage';
 import NotFoundPage from './pages/NotFoundPage';
 import { ComplianceProvider } from './context/ComplianceContext';
 
@@ -36,6 +40,10 @@ const router = createBrowserRouter([
       { path: 'have-a-code-or-need-one', element: <HaveACodeOrNeedOnePage /> },
       { path: 'terms', element: <TermsPage /> },
       { path: 'trust-code-programme', element: <TrustCodeProgrammePage /> },
+      { path: 'founder-statement-on-cryptocurrencies', element: <CryptoPage /> },
+      { path: 'founder-statement-on-cryptocurrencies/bitcoin', element: <BitcoinStatementPage /> },
+      { path: 'founder-statement-on-cryptocurrencies/ether', element: <EtherStatementPage /> },
+      { path: 'founder-statement-on-cryptocurrencies/stablecoins', element: <StablecoinStatementPage /> },
       { path: '*', element: <NotFoundPage /> },
     ],
   },
