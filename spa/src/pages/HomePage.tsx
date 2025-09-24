@@ -323,6 +323,7 @@ export default function HomePage() {
                 <div>You save 10% & we donate another 10%</div>
                 <div>to your chosen organisation</div>
               </a>
+              <a href="/trust-code-programme" role="button" className="glass trajan-text nv-glass--inner-hairline border border-white/10 rounded-lg px-3 py-2 inline-block text-gray-200 hover:text-white text-center">Trust Code Programme - Organisations</a>
               <a href="/founder-statement-on-cryptocurrencies" role="button" className="glass trajan-text nv-glass--inner-hairline border border-white/10 rounded-lg px-3 py-2 inline-block text-gray-200 hover:text-white text-center">Founder statement on crypto "currencies"</a>
             </div>
           </div>
@@ -493,7 +494,6 @@ export default function HomePage() {
             </div>
             <div className="flex flex-col max-w-[400px] w-full">
               <div className="flex flex-col max-w-[400px] gap-4">
-                <a href="/trust-code-programme" role="button" className="glass nv-glass--inner-hairline border border-white/10 rounded-lg px-3 py-2 inline-block text-gray-200 hover:text-white">Trust Code Programme - Organisations</a>
                 <a href="/what-does-an-annual-nirvana-membership-give-you" role="button" className="glass nv-glass--inner-hairline border border-white/10 rounded-lg px-3 py-2 inline-block text-gray-200 hover:text-white">What does an annual Nirvana membership give you?</a>
                 <a href="/nirvana-membership-fees" role="button" className="glass nv-glass--inner-hairline border border-white/10 rounded-lg px-3 py-2 inline-block text-gray-200 hover:text-white">Nirvana membership fees</a>
                 <a href="/what-is-compass-score" role="button" className="glass nv-glass--inner-hairline border border-white/10 rounded-lg px-3 py-2 inline-block text-gray-200 hover:text-white">The Compass Score</a>
@@ -526,6 +526,9 @@ export default function HomePage() {
                   <div>You save 10% & we donate another 10%</div>
                   <div>to your chosen organisation</div>
                 </a>
+              </div>
+              <div className="flex flex-row flex-wrap gap-2 justify-center">
+                <a href="/trust-code-programme" role="button" className="glass text-lg trajan-text nv-glass--inner-hairline border border-white/10 rounded-lg px-4 py-2 inline-block h-auto self-start text-white hover:text-gray-200 text-center">Trust Code Programme - Organisations</a>
               </div>
               <div className="flex flex-row flex-wrap gap-2 justify-center mb-20">
                 <a href="/founder-statement-on-cryptocurrencies" role="button" className="glass text-lg trajan-text nv-glass--inner-hairline border border-white/10 rounded-lg px-4 py-2 inline-block h-auto self-start text-white hover:text-gray-200 text-center">Founder statement on crypto "currencies"</a>
@@ -667,7 +670,7 @@ export default function HomePage() {
         <div className="md:hidden px-3 pb-5">
           <div className="flex flex-col gap-4 items-stretch">
             <div className="flex flex-col gap-3">
-              <a href="/trust-code-programme" role="button" className="glass nv-glass--inner-hairline border border-white/10 rounded-lg px-3 py-2 block w-full text-gray-200 hover:text-white text-center">Trust Code Programme - Organisations</a>
+              {/* <a href="/trust-code-programme" role="button" className="glass nv-glass--inner-hairline border border-white/10 rounded-lg px-3 py-2 block w-full text-gray-200 hover:text-white text-center">Trust Code Programme - Organisations</a> */}
               {/* <a href="/about" className="glass nv-glass--inner-hairline border border-white/10 rounded-lg px-3 py-2 block w-full text-gray-200 hover:text-white text-center">About us</a> */}
               <a href="/what-does-an-annual-nirvana-membership-give-you" role="button" className="glass nv-glass--inner-hairline border border-white/10 rounded-lg px-3 py-2 block w-full text-gray-200 hover:text-white text-center">What does an annual Nirvana membership give you?</a>
               <a href="/nirvana-membership-fees" role="button" className="glass nv-glass--inner-hairline border border-white/10 rounded-lg px-3 py-2 block w-full text-gray-200 hover:text-white text-center">Nirvana membership fees</a>
