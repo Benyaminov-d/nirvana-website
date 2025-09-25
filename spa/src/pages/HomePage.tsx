@@ -519,7 +519,11 @@ export default function HomePage() {
               </div>
               <div className="flex flex-row flex-wrap gap-2 justify-center">
                 <a href="/why-do-we-exist" role="button" className="glass text-lg trajan-text nv-glass--inner-hairline border border-white/10 rounded-lg px-4 py-2 block md:w-full md:max-w-[475px] h-auto self-start text-white hover:text-gray-200 text-center">Why do we exist</a>
+              </div>
+              <div className="flex flex-row flex-wrap gap-2 justify-center">
                 <a href="/the-founder" role="button" className="glass text-lg trajan-text nv-glass--inner-hairline border border-white/10 rounded-lg px-4 py-2 block md:w-full md:max-w-[475px] h-auto self-start text-white hover:text-gray-200 text-center">The Founder - Arman Valaquenta</a>
+              </div>
+              <div className="flex flex-row flex-wrap gap-2 justify-center">
                 <a href="/nirvana-fellows" role="button" className="glass text-lg trajan-text nv-glass--inner-hairline border border-white/10 rounded-lg px-4 py-2 block md:w-full md:max-w-[475px] h-auto self-start text-white hover:text-gray-200 text-center">Nirvana Fellows</a>
               </div>
               <div className="flex flex-row flex-wrap gap-2 justify-center">
