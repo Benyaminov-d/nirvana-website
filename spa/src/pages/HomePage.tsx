@@ -317,7 +317,7 @@ export default function HomePage() {
             <div className="flex flex-col gap-3">
               <a href="/what-is-this-all-about" role="button" className="glass trajan-text nv-glass--inner-hairline border border-white/10 rounded-lg px-3 py-2 block w-full text-gray-200 hover:text-white text-center">Message from the founder</a>
               <a href="/why-do-we-exist" role="button" className="glass trajan-text nv-glass--inner-hairline border border-white/10 rounded-lg px-3 py-2 block w-full text-gray-200 hover:text-white text-center">Why do we exist</a>
-              <a href="/the-founder" role="button" className="glass trajan-text nv-glass--inner-hairline border border-white/10 rounded-lg px-3 py-2 block w-full text-gray-200 hover:text-white text-center">The Founder - Arman Valaquenta</a>
+              <a href="/the-founder" role="button" className="glass trajan-text nv-glass--inner-hairline border border-white/10 rounded-lg px-3 py-2 block w-full text-gray-200 hover:text-white text-center">The Founder</a>
               <a href="/nirvana-fellows" role="button" className="glass trajan-text nv-glass--inner-hairline border border-white/10 rounded-lg px-3 py-2 block w-full text-gray-200 hover:text-white text-center">Nirvana Fellows</a>
               <a href="/have-a-code-or-need-one" role="button" className="glass trajan-text nv-glass--inner-hairline border border-white/10 rounded-lg px-3 py-2 block w-full text-gray-200 hover:text-white text-center">
                 <div>Trust Code programme</div>
@@ -521,7 +521,7 @@ export default function HomePage() {
                 <a href="/why-do-we-exist" role="button" className="glass text-lg trajan-text nv-glass--inner-hairline border border-white/10 rounded-lg px-4 py-2 block md:w-full md:max-w-[475px] h-auto self-start text-white hover:text-gray-200 text-center">Why do we exist</a>
               </div>
               <div className="flex flex-row flex-wrap gap-2 justify-center">
-                <a href="/the-founder" role="button" className="glass text-lg trajan-text nv-glass--inner-hairline border border-white/10 rounded-lg px-4 py-2 block md:w-full md:max-w-[475px] h-auto self-start text-white hover:text-gray-200 text-center">The Founder - Arman Valaquenta</a>
+                <a href="/the-founder" role="button" className="glass text-lg trajan-text nv-glass--inner-hairline border border-white/10 rounded-lg px-4 py-2 block md:w-full md:max-w-[475px] h-auto self-start text-white hover:text-gray-200 text-center">The Founder</a>
               </div>
               <div className="flex flex-row flex-wrap gap-2 justify-center">
                 <a href="/nirvana-fellows" role="button" className="glass text-lg trajan-text nv-glass--inner-hairline border border-white/10 rounded-lg px-4 py-2 block md:w-full md:max-w-[475px] h-auto self-start text-white hover:text-gray-200 text-center">Nirvana Fellows</a>
