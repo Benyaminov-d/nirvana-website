@@ -20,6 +20,7 @@ import BitcoinStatementPage from './pages/BitcoinStatementPage';
 import EtherStatementPage from './pages/EtherStatementPage';
 import StablecoinStatementPage from './pages/StablecoinStatementPage';
 import NotFoundPage from './pages/NotFoundPage';
+import NirvanaFellowsPage from './pages/NirvanaFellowsPage';
 import { ComplianceProvider } from './context/ComplianceContext';
 
 const router = createBrowserRouter([
@@ -28,7 +29,7 @@ const router = createBrowserRouter([
     element: <RootLayout />,
     children: [
       { index: true, element: <HomePage /> },
-      { path: 'about', element: <AboutPage /> },
+      { path: 'the-founder', element: <AboutPage /> },
       { path: 'member-eula', element: <MemberEulaPage /> },
       { path: 'why-people-use-nirvana', element: <WhyPeopleUseNirvanaPage /> },
       { path: 'why-do-we-exist', element: <WhyPeopleUseNirvanaPage /> },
@@ -38,6 +39,7 @@ const router = createBrowserRouter([
       { path: 'nirvana-membership-fees', element: <AnnualMembershipBenefitsPage /> },
       { path: 'why-do-i-need-it', element: <WhyDoINeedItPage /> },
       { path: 'have-a-code-or-need-one', element: <HaveACodeOrNeedOnePage /> },
+      { path: 'nirvana-fellows', element: <NirvanaFellowsPage /> },
       { path: 'terms', element: <TermsPage /> },
       { path: 'trust-code-programme', element: <TrustCodeProgrammePage /> },
       { path: 'founder-statement-on-cryptocurrencies', element: <CryptoPage /> },

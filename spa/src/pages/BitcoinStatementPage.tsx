@@ -5,12 +5,12 @@ export default function BitcoinStatementPage() {
       <div className="glass nv-glass--inner-hairline border border-white/10 rounded-2xl p-6 md:p-10 mb-8">
         <header className="text-center mb-4">
           <h1 className="trajan-text text-4xl md:text-5xl text-white mb-4">Founder statement on Bitcoin</h1>
-          <p className="text-gray-300">(personal opinion – not financial advice for you)</p>
-          <p className="text-gray-400 mt-2">Arman Q. Valaquenta · 20 September 2025</p>
+          <p className="text-gray-300 mt-2">(personal opinion – not financial advice for you)</p>
+          <p className="text-gray-400 mt-4">Arman Q. Valaquenta · 20 September 2025</p>
         </header>
 
         {/* FCA warning */}
-        <div className="mt-6 bg-black/20 border border-[#ff7f50]/30 rounded-xl p-4 text-[#ffddb8]">
+        <div className="mt-8 bg-black/20 border border-[#ff7f50]/30 rounded-xl p-4 text-[#ffddb8]">
           <p className="text-sm md:text-base">
             UK — Mandatory FCA risk warning: “Do not invest unless you are prepared to lose all the money you invest. This is a high-risk investment and you should not expect to be protected if something goes wrong. Take 2 mins to learn more.”
           </p>

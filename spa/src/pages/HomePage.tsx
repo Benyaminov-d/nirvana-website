@@ -228,8 +228,8 @@ export default function HomePage() {
             <style>
               {`
                 @keyframes nv-charities-marquee {
-                  0% { transform: translateX(-50%); }
-                  100% { transform: translateX(0); }
+                  0% { transform: translateX(0); }
+                  100% { transform: translateX(-50%); }
                 }
               `}
             </style>
@@ -315,16 +315,17 @@ export default function HomePage() {
           {/* Mobile-only navigation buttons */}
           <div className="md:hidden col-span-1 px-2 mt-8 mb-6">
             <div className="flex flex-col gap-3">
-              <a href="/what-is-this-all-about" role="button" className="glass trajan-text nv-glass--inner-hairline border border-white/10 rounded-lg px-3 py-2 inline-block text-gray-200 hover:text-white text-center">Message from the founder</a>
-              <a href="/why-do-we-exist" role="button" className="glass trajan-text nv-glass--inner-hairline border border-white/10 rounded-lg px-3 py-2 inline-block text-gray-200 hover:text-white text-center">Why do we exist</a>
-              <a href="/about" role="button" className="glass trajan-text nv-glass--inner-hairline border border-white/10 rounded-lg px-3 py-2 inline-block text-gray-200 hover:text-white text-center">About us</a>
-              <a href="/have-a-code-or-need-one" role="button" className="glass trajan-text nv-glass--inner-hairline border border-white/10 rounded-lg px-3 py-2 inline-block text-gray-200 hover:text-white text-center">
+              <a href="/what-is-this-all-about" role="button" className="glass trajan-text nv-glass--inner-hairline border border-white/10 rounded-lg px-3 py-2 block w-full text-gray-200 hover:text-white text-center">Message from the founder</a>
+              <a href="/why-do-we-exist" role="button" className="glass trajan-text nv-glass--inner-hairline border border-white/10 rounded-lg px-3 py-2 block w-full text-gray-200 hover:text-white text-center">Why do we exist</a>
+              <a href="/the-founder" role="button" className="glass trajan-text nv-glass--inner-hairline border border-white/10 rounded-lg px-3 py-2 block w-full text-gray-200 hover:text-white text-center">The Founder - Arman Valaquenta</a>
+              <a href="/nirvana-fellows" role="button" className="glass trajan-text nv-glass--inner-hairline border border-white/10 rounded-lg px-3 py-2 block w-full text-gray-200 hover:text-white text-center">Nirvana Fellows</a>
+              <a href="/have-a-code-or-need-one" role="button" className="glass trajan-text nv-glass--inner-hairline border border-white/10 rounded-lg px-3 py-2 block w-full text-gray-200 hover:text-white text-center">
                 <div>Trust Code programme</div>
                 <div>You save 10% & we donate another 10%</div>
                 <div>to your chosen organisation</div>
               </a>
-              <a href="/trust-code-programme" role="button" className="glass trajan-text nv-glass--inner-hairline border border-white/10 rounded-lg px-3 py-2 inline-block text-gray-200 hover:text-white text-center">Trust Code Programme - Organisations</a>
-              <a href="/founder-statement-on-cryptocurrencies" role="button" className="glass trajan-text nv-glass--inner-hairline border border-white/10 rounded-lg px-3 py-2 inline-block text-gray-200 hover:text-white text-center">Founder statement on crypto "currencies"</a>
+              <a href="/trust-code-programme" role="button" className="glass trajan-text nv-glass--inner-hairline border border-white/10 rounded-lg px-3 py-2 block w-full text-gray-200 hover:text-white text-center">Trust Code Programme - Organisations</a>
+              <a href="/founder-statement-on-cryptocurrencies" role="button" className="glass trajan-text nv-glass--inner-hairline border border-white/10 rounded-lg px-3 py-2 block w-full text-gray-200 hover:text-white text-center">Founder statement on crypto "currencies"</a>
             </div>
           </div>
 
@@ -510,28 +511,29 @@ export default function HomePage() {
             <div className="hidden md:flex flex-col row-span-1 gap-3 w-full justify-start content-start">
 
               <div className="flex flex-row flex-wrap gap-3 justify-center">
-                <a href="/what-is-this-all-about" role="button" className="glass text-lg trajan-text nv-glass--inner-hairline border border-white/10 rounded-lg px-4 py-2 inline-block h-auto self-start text-white hover:text-gray-200 text-center">
+                <a href="/what-is-this-all-about" role="button" className="glass text-lg trajan-text nv-glass--inner-hairline border border-white/10 rounded-lg px-4 py-2 block md:w-full md:max-w-[475px] h-auto self-start text-white hover:text-gray-200 text-center">
                   <div>Message from the founder</div>
                   {/* <div>What is this all about</div>
                   <div>a message from the founder</div> */}
                 </a>
               </div>
               <div className="flex flex-row flex-wrap gap-2 justify-center">
-                <a href="/why-do-we-exist" role="button" className="glass text-lg trajan-text nv-glass--inner-hairline border border-white/10 rounded-lg px-4 py-2 inline-block h-auto self-start text-white hover:text-gray-200 text-center">Why do we exist</a>
-                <a href="/about" role="button" className="glass text-lg trajan-text nv-glass--inner-hairline border border-white/10 rounded-lg px-4 py-2 inline-block h-auto self-start text-white hover:text-gray-200 text-center">About us</a>
+                <a href="/why-do-we-exist" role="button" className="glass text-lg trajan-text nv-glass--inner-hairline border border-white/10 rounded-lg px-4 py-2 block md:w-full md:max-w-[475px] h-auto self-start text-white hover:text-gray-200 text-center">Why do we exist</a>
+                <a href="/the-founder" role="button" className="glass text-lg trajan-text nv-glass--inner-hairline border border-white/10 rounded-lg px-4 py-2 block md:w-full md:max-w-[475px] h-auto self-start text-white hover:text-gray-200 text-center">The Founder - Arman Valaquenta</a>
+                <a href="/nirvana-fellows" role="button" className="glass text-lg trajan-text nv-glass--inner-hairline border border-white/10 rounded-lg px-4 py-2 block md:w-full md:max-w-[475px] h-auto self-start text-white hover:text-gray-200 text-center">Nirvana Fellows</a>
               </div>
               <div className="flex flex-row flex-wrap gap-2 justify-center">
-                <a href="/have-a-code-or-need-one" role="button" className="glass text-lg trajan-text nv-glass--inner-hairline border border-white/10 rounded-lg px-4 py-2 inline-block h-auto self-start text-white hover:text-gray-200 text-center">
+                <a href="/have-a-code-or-need-one" role="button" className="glass text-lg trajan-text nv-glass--inner-hairline border border-white/10 rounded-lg px-4 py-2 block md:w-full md:max-w-[475px] h-auto self-start text-white hover:text-gray-200 text-center">
                   <div>Trust Code programme</div>
                   <div>You save 10% & we donate another 10%</div>
                   <div>to your chosen organisation</div>
                 </a>
               </div>
               <div className="flex flex-row flex-wrap gap-2 justify-center">
-                <a href="/trust-code-programme" role="button" className="glass text-lg trajan-text nv-glass--inner-hairline border border-white/10 rounded-lg px-4 py-2 inline-block h-auto self-start text-white hover:text-gray-200 text-center">Trust Code Programme - Organisations</a>
+                <a href="/trust-code-programme" role="button" className="glass text-lg trajan-text nv-glass--inner-hairline border border-white/10 rounded-lg px-4 py-2 block md:w-full md:max-w-[475px] h-auto self-start text-white hover:text-gray-200 text-center">Trust Code Programme - Organisations</a>
               </div>
               <div className="flex flex-row flex-wrap gap-2 justify-center mb-20">
-                <a href="/founder-statement-on-cryptocurrencies" role="button" className="glass text-lg trajan-text nv-glass--inner-hairline border border-white/10 rounded-lg px-4 py-2 inline-block h-auto self-start text-white hover:text-gray-200 text-center">Founder statement on crypto "currencies"</a>
+                <a href="/founder-statement-on-cryptocurrencies" role="button" className="glass text-lg trajan-text nv-glass--inner-hairline border border-white/10 rounded-lg px-4 py-2 block md:w-full md:max-w-[475px] h-auto self-start text-white hover:text-gray-200 text-center">Founder statement on crypto "currencies"</a>
               </div>
             </div>
             <div className="glass mt-6 md:mt-0 
@@ -671,7 +673,7 @@ export default function HomePage() {
           <div className="flex flex-col gap-4 items-stretch">
             <div className="flex flex-col gap-3">
               {/* <a href="/trust-code-programme" role="button" className="glass nv-glass--inner-hairline border border-white/10 rounded-lg px-3 py-2 block w-full text-gray-200 hover:text-white text-center">Trust Code Programme - Organisations</a> */}
-              {/* <a href="/about" className="glass nv-glass--inner-hairline border border-white/10 rounded-lg px-3 py-2 block w-full text-gray-200 hover:text-white text-center">About us</a> */}
+              {/* <a href="/the-founder" className="glass nv-glass--inner-hairline border border-white/10 rounded-lg px-3 py-2 block w-full text-gray-200 hover:text-white text-center">About us</a> */}
               <a href="/what-does-an-annual-nirvana-membership-give-you" role="button" className="glass nv-glass--inner-hairline border border-white/10 rounded-lg px-3 py-2 block w-full text-gray-200 hover:text-white text-center">What does an annual Nirvana membership give you?</a>
               <a href="/nirvana-membership-fees" role="button" className="glass nv-glass--inner-hairline border border-white/10 rounded-lg px-3 py-2 block w-full text-gray-200 hover:text-white text-center">Nirvana membership fees</a>
               <a href="/what-is-compass-score" role="button" className="glass nv-glass--inner-hairline border border-white/10 rounded-lg px-3 py-2 block w-full text-gray-200 hover:text-white text-center">The Compass Score</a>
