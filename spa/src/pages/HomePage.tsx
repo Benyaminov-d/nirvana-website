@@ -192,7 +192,10 @@ export default function HomePage() {
     { src: new URL('../assets/charities/2.jpg', import.meta.url).toString(), alt: 'Sea Shepherd' },
     { src: new URL('../assets/charities/3.jpg', import.meta.url).toString(), alt: 'Rainforest Flying Squad' },
     { src: new URL('../assets/charities/4.jpg', import.meta.url).toString(), alt: 'PETA' },
-    { src: new URL('../assets/charities/5.jpg', import.meta.url).toString(), alt: 'PETA' },
+    { src: new URL('../assets/charities/5.jpg', import.meta.url).toString(), alt: 'Greenpeace' },
+    { src: new URL('../assets/charities/6.jpg', import.meta.url).toString(), alt: '6' },
+    { src: new URL('../assets/charities/7.jpg', import.meta.url).toString(), alt: '7' },
+    { src: new URL('../assets/charities/8.jpg', import.meta.url).toString(), alt: '8' },
   ]), []);
 
   return (
@@ -211,16 +214,46 @@ export default function HomePage() {
           <span className="hidden md:block whitespace-nowrap text-gray-200 trajan-text uppercase text-sm md:text-2xl">
             Nirvana supports:
           </span>
-          {/* Desktop: static row */}
-          <div className='hidden md:flex w-full'>
-            {charities.map((c, idx) => (
-              <img
-                key={idx}
-                src={c.src}
-                alt={c.alt}
-                className="md:h-24 h-16 mr-6 md:mr-16 w-auto object-contain"
-              />
-            ))}
+          {/* Desktop: infinite smooth marquee */}
+          <div className='hidden md:flex w-full items-center relative'>
+            <style>
+              {`
+                @keyframes nv-charities-marquee-desktop {
+                  0% { transform: translateX(0); }
+                  100% { transform: translateX(-50%); }
+                }
+              `}
+            </style>
+            <div className="relative w-full overflow-hidden" style={{ WebkitOverflowScrolling: 'auto' }}>
+              <div
+                className="flex items-center whitespace-nowrap gap-10 md:gap-16 px-8"
+                style={{ animation: 'nv-charities-marquee-desktop 28s linear infinite' }}
+              >
+                <div className="flex items-center shrink-0 gap-10 md:gap-16">
+                  {charities.map((c, idx) => (
+                    <img
+                      key={`d1-${idx}`}
+                      src={c.src}
+                      alt={c.alt}
+                      className="h-16 md:h-24 w-auto object-contain"
+                    />
+                  ))}
+                </div>
+                <div className="flex items-center shrink-0 gap-10 md:gap-16" aria-hidden="true">
+                  {charities.map((c, idx) => (
+                    <img
+                      key={`d2-${idx}`}
+                      src={c.src}
+                      alt={c.alt}
+                      className="h-16 md:h-24 w-auto object-contain"
+                    />
+                  ))}
+                </div>
+              </div>
+              {/* optional fading edges */}
+              <div className="pointer-events-none absolute inset-y-0 left-0 w-10" style={{ background: 'linear-gradient(to right, rgba(0,0,0,0.85), rgba(0,0,0,0))' }} />
+              <div className="pointer-events-none absolute inset-y-0 right-0 w-10" style={{ background: 'linear-gradient(to left, rgba(0,0,0,0.85), rgba(0,0,0,0))' }} />
+            </div>
           </div>
           {/* Mobile: infinite marquee with fading edges */}
           <div className="relative md:hidden overflow-hidden" style={{ width: '100vw', marginLeft: 'calc(50% - 50vw)', marginRight: 'calc(50% - 50vw)' }}>
