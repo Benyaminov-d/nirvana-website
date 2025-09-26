@@ -20,6 +20,7 @@ import BitcoinStatementPage from './pages/BitcoinStatementPage';
 import EtherStatementPage from './pages/EtherStatementPage';
 import StablecoinStatementPage from './pages/StablecoinStatementPage';
 import NotFoundPage from './pages/NotFoundPage';
+import YourRightToKnowPage from './pages/YourRightToKnowPage';
 import NirvanaFellowsPage from './pages/NirvanaFellowsPage';
 import { ComplianceProvider } from './context/ComplianceContext';
 
@@ -42,6 +43,7 @@ const router = createBrowserRouter([
       { path: 'nirvana-fellows', element: <NirvanaFellowsPage /> },
       { path: 'terms', element: <TermsPage /> },
       { path: 'trust-code-programme', element: <TrustCodeProgrammePage /> },
+      { path: 'your-right-to-know', element: <YourRightToKnowPage /> },
       { path: 'founder-statement-on-cryptocurrencies', element: <CryptoPage /> },
       { path: 'founder-statement-on-cryptocurrencies/bitcoin', element: <BitcoinStatementPage /> },
       { path: 'founder-statement-on-cryptocurrencies/ether', element: <EtherStatementPage /> },
