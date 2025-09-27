@@ -187,16 +187,28 @@ export default function HomePage() {
   }, [items.length]);
 
   // Charities images (used for desktop row and mobile marquee)
-  const charities = useMemo(() => ([
-    { src: new URL('../assets/charities/1.jpg', import.meta.url).toString(), alt: "The Dzunuk'wa Society" },
-    { src: new URL('../assets/charities/2.jpg', import.meta.url).toString(), alt: 'Sea Shepherd' },
-    { src: new URL('../assets/charities/3.jpg', import.meta.url).toString(), alt: 'Rainforest Flying Squad' },
-    { src: new URL('../assets/charities/4.jpg', import.meta.url).toString(), alt: 'PETA' },
-    { src: new URL('../assets/charities/5.jpg', import.meta.url).toString(), alt: 'Greenpeace' },
-    { src: new URL('../assets/charities/6.jpg', import.meta.url).toString(), alt: '6' },
-    { src: new URL('../assets/charities/7.jpg', import.meta.url).toString(), alt: '7' },
-    { src: new URL('../assets/charities/8.jpg', import.meta.url).toString(), alt: '8' },
-  ]), []);
+  const charities = useMemo(() => {
+    const arr = [
+      { src: new URL('../assets/charities/1.jpg', import.meta.url).toString(), alt: "The Dzunuk'wa Society" },
+      { src: new URL('../assets/charities/2.jpg', import.meta.url).toString(), alt: 'Sea Shepherd' },
+      { src: new URL('../assets/charities/3.jpg', import.meta.url).toString(), alt: 'Rainforest Flying Squad' },
+      { src: new URL('../assets/charities/4.jpg', import.meta.url).toString(), alt: 'PETA' },
+      { src: new URL('../assets/charities/5.jpg', import.meta.url).toString(), alt: 'Greenpeace' },
+      { src: new URL('../assets/charities/6.jpg', import.meta.url).toString(), alt: '6' },
+      { src: new URL('../assets/charities/7.jpg', import.meta.url).toString(), alt: '7' },
+      { src: new URL('../assets/charities/8.jpg', import.meta.url).toString(), alt: '8' },
+      { src: new URL('../assets/charities/9.jpg', import.meta.url).toString(), alt: 'Women Center' },
+      { src: new URL('../assets/charities/10.jpg', import.meta.url).toString(), alt: 'World Animal Protection' },
+    ];
+    // Shuffle once per mount to randomize order while keeping infinite loop seamless
+    for (let i = arr.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      const tmp = arr[i];
+      arr[i] = arr[j];
+      arr[j] = tmp;
+    }
+    return arr;
+  }, []);
 
   return (
     <div className="relative max-w-full mx-auto">
