@@ -63,7 +63,7 @@ export default function WhatIsThisAllAboutPage() {
               className="w-full rounded-lg"
               controlsList="nodownload"
               preload="metadata"
-              poster="/static/video/arman_video_thumbnail.png"
+              poster="/static/video/arman_video_thumbnail.jpg"
               playsInline
             >
               <source src="/static/video/arman_video.mp4" type="video/mp4" />
