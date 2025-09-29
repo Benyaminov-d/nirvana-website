@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { postJSON } from '../services/http';
 
 type SubmitState = 'idle' | 'submitting' | 'success' | 'error' | 'invalid' | 'already';
@@ -121,6 +122,12 @@ export default function HaveACodeOrNeedOnePage() {
 
   return (
     <main className="max-w-5xl mx-auto px-4 py-8 md:py-12">
+      <div className="mb-4">
+        <Link to="/" className="glass nv-glass--inner-hairline border border-white/10 rounded-lg px-3 py-2 inline-flex items-center gap-2 text-gray-200 hover:text-white">
+          <span className="text-xl leading-none">←</span>
+          <span className="trajan-text">Home</span>
+        </Link>
+      </div>
       {/* Hero */}
       <div className="glass nv-glass--inner-hairline border border-white/10 rounded-2xl p-6 md:p-10 mb-8">
         <header className="text-center mb-4">

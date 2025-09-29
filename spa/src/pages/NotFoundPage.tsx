@@ -3,6 +3,12 @@ import { Link } from 'react-router-dom';
 export default function NotFoundPage() {
   return (
     <main className="max-w-4xl mx-auto px-4 py-16 text-center">
+      <div className="mb-6 text-left">
+        <Link to="/" className="glass nv-glass--inner-hairline border border-white/10 rounded-lg px-3 py-2 inline-flex items-center gap-2 text-gray-200 hover:text-white">
+          <span className="text-xl leading-none">←</span>
+          <span className="trajan-text">Home</span>
+        </Link>
+      </div>
       <div className="glass nv-glass--inner-hairline border border-white/10 rounded-2xl p-8 md:p-12">
         <p className="text-8xl md:text-9xl font-semibold tracking-wider trajan-text">404</p>
         <h1 className="mt-4 text-2xl md:text-3xl font-bold trajan-text">Page not found</h1>
