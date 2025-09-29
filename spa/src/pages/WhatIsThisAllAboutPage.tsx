@@ -57,8 +57,17 @@ export default function WhatIsThisAllAboutPage() {
             </div>
           </div>
           
-          <div className='max-w-[300px] mx-auto'>
-            <img src={new URL('../assets/earnestness.jpeg', import.meta.url).toString()} alt="On earnestness" />
+          <div className='max-w-[560px] mx-auto'>
+            <video 
+              controls 
+              className="w-full rounded-lg"
+              controlsList="nodownload"
+              preload="metadata"
+              playsInline
+            >
+              <source src="/static/video/arman_video.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
           </div>
         </div>
       )}
