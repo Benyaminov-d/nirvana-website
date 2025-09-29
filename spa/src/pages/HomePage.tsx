@@ -360,7 +360,7 @@ export default function HomePage() {
           {/* Mobile-only navigation buttons */}
           <div className="md:hidden col-span-1 px-2 mt-8 mb-6">
             <div className="flex flex-col gap-3">
-              <a href="/what-is-this-all-about" role="button" className="glass trajan-text nv-glass--inner-hairline border border-white/10 rounded-lg px-3 py-2 block w-full text-gray-200 hover:text-white text-center">Message from the founder</a>
+              <a href="/what-is-this-all-about" role="button" className="glass trajan-text nv-glass--inner-hairline border border-white/10 rounded-lg px-3 py-2 block w-full text-gray-200 hover:text-white text-center">Messages from the founder</a>
               <a href="/why-do-we-exist" role="button" className="glass trajan-text nv-glass--inner-hairline border border-white/10 rounded-lg px-3 py-2 block w-full text-gray-200 hover:text-white text-center">Why do we exist</a>
               <a href="/your-right-to-know" role="button" className="glass trajan-text nv-glass--inner-hairline border border-white/10 rounded-lg px-3 py-2 block w-full text-gray-200 hover:text-white text-center">Your right to know</a>
               <a href="/the-founder" role="button" className="glass trajan-text nv-glass--inner-hairline border border-white/10 rounded-lg px-3 py-2 block w-full text-gray-200 hover:text-white text-center">The Founder</a>
@@ -558,7 +558,7 @@ export default function HomePage() {
 
               <div className="flex flex-row flex-wrap gap-3 justify-center">
                 <a href="/what-is-this-all-about" role="button" className="glass text-lg trajan-text nv-glass--inner-hairline border border-white/10 rounded-lg px-4 py-2 block md:w-full md:max-w-[475px] h-auto self-start text-white hover:text-gray-200 text-center">
-                  <div>Message from the founder</div>
+                  <div>Messages from the founder</div>
                   {/* <div>What is this all about</div>
                   <div>a message from the founder</div> */}
                 </a>
