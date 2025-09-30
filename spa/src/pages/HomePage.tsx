@@ -191,9 +191,9 @@ export default function HomePage() {
     const arr = [
       { src: new URL('../assets/charities/1.jpg', import.meta.url).toString(), alt: "The Dzunuk'wa Society" },
       { src: new URL('../assets/charities/2.jpg', import.meta.url).toString(), alt: 'Sea Shepherd' },
-      { src: new URL('../assets/charities/3.jpg', import.meta.url).toString(), alt: 'Rainforest Flying Squad' },
-      { src: new URL('../assets/charities/4.jpg', import.meta.url).toString(), alt: 'PETA' },
-      { src: new URL('../assets/charities/5.jpg', import.meta.url).toString(), alt: 'Greenpeace' },
+      // { src: new URL('../assets/charities/3.jpg', import.meta.url).toString(), alt: 'Rainforest Flying Squad' },
+      // { src: new URL('../assets/charities/4.jpg', import.meta.url).toString(), alt: 'PETA' },
+      // { src: new URL('../assets/charities/5.jpg', import.meta.url).toString(), alt: 'Greenpeace' },
       { src: new URL('../assets/charities/6.jpg', import.meta.url).toString(), alt: '6' },
       { src: new URL('../assets/charities/7.jpg', import.meta.url).toString(), alt: '7' },
       { src: new URL('../assets/charities/8.jpg', import.meta.url).toString(), alt: '8' },
@@ -223,7 +223,7 @@ export default function HomePage() {
           Nirvana supports:
         </span>
         <div className="inline-flex mt-2 w-full items-center gap-5 justify-center">
-          <span className="hidden md:block whitespace-nowrap text-gray-200 trajan-text uppercase text-sm md:text-2xl">
+          <span className="hidden md:block whitespace-nowrap text-gray-200 trajan-text uppercase text-sm md:text-xl">
             Nirvana supports:
           </span>
           {/* Desktop: infinite smooth marquee */}
@@ -247,7 +247,7 @@ export default function HomePage() {
                       key={`d1-${idx}`}
                       src={c.src}
                       alt={c.alt}
-                      className="h-16 md:h-24 w-auto object-contain"
+                      className="h-16 md:h-16 w-auto object-contain"
                     />
                   ))}
                 </div>
@@ -257,7 +257,7 @@ export default function HomePage() {
                       key={`d2-${idx}`}
                       src={c.src}
                       alt={c.alt}
-                      className="h-16 md:h-24 w-auto object-contain"
+                      className="h-16 md:h-16 w-auto object-contain"
                     />
                   ))}
                 </div>
