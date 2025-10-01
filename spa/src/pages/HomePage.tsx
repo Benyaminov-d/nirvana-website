@@ -212,6 +212,18 @@ export default function HomePage() {
 
   return (
     <div className="relative max-w-full mx-auto">
+      {/* Top-right Login button */}
+      <div className="fixed top-3 right-3 z-50">
+        <a
+          href="https://app.nirvana.bm/signin"
+          className="h-[40px] inline-flex items-center px-4 bg-[#c19658] rounded-xl text-black hover:opacity-90 hover:bg-[#c19658]/90"
+          aria-label="Login"
+          target="_blank"
+          title="Login"
+        >
+          <span className="text-sm">Login</span>
+        </a>
+      </div>
     {/* <div className="relative max-w-[1450px] mx-auto"> */}
       {/* Full-viewport-width ticker (ignores main padding) */}
       {/* <div className="mt-2 mb-2" style={{ width: '100vw', marginLeft: 'calc(50% - 50vw)' }}>
@@ -411,8 +423,8 @@ export default function HomePage() {
               </div>
               <div className="flex flex-col gap-2 w-full early-form mt-auto">
                 <div ref={mobileChatRef} className="flex flex-col gap-2 mb-4">
-                  <div className="flex justify-end">
-                    <p className="chat-bubble w-fit chat-bubble--right">Welcome to Nirvana</p>
+                  <div className="flex justify-start">
+                    <p className="chat-bubble w-fit">Welcome to Nirvana</p>
                   </div>
                   {/* <div className="flex justify-end">
                     <p className="chat-bubble w-fit chat-bubble--right">Begin anywhere</p>
@@ -424,12 +436,12 @@ export default function HomePage() {
                   const input = (e.currentTarget.querySelector('input') as HTMLInputElement);
                   const msg = (input?.value || '').trim();
                   if (!msg) return;
-                  // Append user's message on the left
+                  // Append user's message on the right
                   if (mobileChatRef.current) {
                     const row = document.createElement('div');
-                    row.className = 'flex justify-start';
+                    row.className = 'flex justify-end';
                     const bubble = document.createElement('p');
-                    bubble.className = 'chat-bubble fade-in-up';
+                    bubble.className = 'chat-bubble chat-bubble--right fade-in-up';
                     bubble.style.background = '#1c39bb';
                     bubble.style.color = '#ffffff';
                     bubble.textContent = msg;
@@ -438,11 +450,11 @@ export default function HomePage() {
                     mobileChatRef.current.scrollTop = mobileChatRef.current.scrollHeight;
                   }
                   if (input) input.value = '';
-                  // Typing indicator on the right for ~2.5s
+                  // Typing indicator on the left for ~2.5s
                   const typingRow = document.createElement('div');
-                  typingRow.className = 'flex justify-end';
+                  typingRow.className = 'flex justify-start';
                   const typing = document.createElement('div');
-                  typing.className = 'chat-bubble chat-bubble--right fade-in-up typing';
+                  typing.className = 'chat-bubble fade-in-up typing';
                   typing.innerHTML = '<span class="dot"></span><span class="dot"></span><span class="dot"></span>';
                   typingRow.appendChild(typing);
                   mobileChatRef.current?.appendChild(typingRow);
@@ -451,10 +463,10 @@ export default function HomePage() {
                   setTimeout(()=>{
                     try { mobileChatRef.current?.removeChild(typingRow); } catch {}
                     const ansRow = document.createElement('div');
-                    ansRow.className = 'flex justify-end';
+                    ansRow.className = 'flex justify-start';
                     const ans = document.createElement('p');
-                    ans.className = 'chat-bubble chat-bubble--right fade-in-up';
-                    ans.textContent = 'Thank you for your message, Nirvana will be live soon';
+                    ans.className = 'chat-bubble fade-in-up';
+                    ans.textContent = 'Access to Satya and Proximity Search requires a paid subscription';
                     ansRow.appendChild(ans);
                     mobileChatRef.current?.appendChild(ansRow);
                     mobileChatRef.current?.scrollTo({ top: mobileChatRef.current.scrollHeight });
@@ -465,7 +477,7 @@ export default function HomePage() {
                   </div>
                   <div>
                     <button type="submit" disabled={mobileLocked} className="h-[40px] px-4 md:px-4 mr-2 bg-[#c19658] rounded-xl text-black hover:opacity-90 hover:bg-[#c19658]/90 disabled:opacity-60 disabled:cursor-not-allowed">
-                      <span className="text-sm">Search</span>
+                      <span className="text-sm">Enter</span>
                     </button>
                   </div>
                 </form>
@@ -621,8 +633,8 @@ export default function HomePage() {
               </div>
               <div className="flex flex-col gap-2 w-full early-form mt-auto">
                 <div ref={chatRef} className="flex flex-col gap-2 mb-4">
-                  <div className="flex justify-end">
-                    <p className="chat-bubble w-fit chat-bubble--right">Welcome to Nirvana</p>
+                  <div className="flex justify-start">
+                    <p className="chat-bubble w-fit">Welcome to Nirvana</p>
                   </div>
                   {/* <div className="flex justify-end">
                     <p className="chat-bubble w-fit chat-bubble--right">Begin anywhere</p>
@@ -634,12 +646,12 @@ export default function HomePage() {
                   const input = (e.currentTarget.querySelector('input') as HTMLInputElement);
                   const msg = (input?.value || '').trim();
                   if (!msg) return;
-                  // Append user's message on the left
+                  // Append user's message on the right
                   if (chatRef.current) {
                     const row = document.createElement('div');
-                    row.className = 'flex justify-start';
+                    row.className = 'flex justify-end';
                     const bubble = document.createElement('p');
-                    bubble.className = 'chat-bubble fade-in-up';
+                    bubble.className = 'chat-bubble chat-bubble--right fade-in-up';
                     bubble.style.background = '#1c39bb';
                     bubble.style.color = '#ffffff';
                     bubble.textContent = msg;
@@ -648,11 +660,11 @@ export default function HomePage() {
                     chatRef.current.scrollTop = chatRef.current.scrollHeight;
                   }
                   if (input) input.value = '';
-                  // Typing indicator on the right for ~2.5s
+                  // Typing indicator on the left for ~2.5s
                   const typingRow = document.createElement('div');
-                  typingRow.className = 'flex justify-end';
+                  typingRow.className = 'flex justify-start';
                   const typing = document.createElement('div');
-                  typing.className = 'chat-bubble chat-bubble--right fade-in-up typing';
+                  typing.className = 'chat-bubble fade-in-up typing';
                   typing.innerHTML = '<span class="dot"></span><span class="dot"></span><span class="dot"></span>';
                   typingRow.appendChild(typing);
                   chatRef.current?.appendChild(typingRow);
@@ -661,11 +673,11 @@ export default function HomePage() {
                   setTimeout(()=>{
                     try { chatRef.current?.removeChild(typingRow); } catch {}
                     const ansRow = document.createElement('div');
-                    ansRow.className = 'flex justify-end';
+                    ansRow.className = 'flex justify-start';
                     const ans = document.createElement('p');
-                    ans.className = 'chat-bubble chat-bubble--right fade-in-up';
+                    ans.className = 'chat-bubble fade-in-up';
                     // ans.textContent = 'Enter a product name or symbol, or specify a loss limit (e.g., −20%)';
-                    ans.textContent = 'Thank you for your message, Nirvana will be live soon';
+                    ans.textContent = 'Access to Satya and Proximity Search requires a paid subscription';
                     ansRow.appendChild(ans);
                     chatRef.current?.appendChild(ansRow);
                     chatRef.current?.scrollTo({ top: chatRef.current.scrollHeight });
@@ -676,7 +688,7 @@ export default function HomePage() {
                   </div>
                   <div>
                     <button type="submit" disabled={locked} className="h-[40px] px-4 md:px-4 mr-2 bg-[#c19658] rounded-xl text-black hover:opacity-90 hover:bg-[#c19658]/90 disabled:opacity-60 disabled:cursor-not-allowed">
-                      <span className="text-sm">Search</span>
+                      <span className="text-sm">Enter</span>
                     </button>
                   </div>
                 </form>
