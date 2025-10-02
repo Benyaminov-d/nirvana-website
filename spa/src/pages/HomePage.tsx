@@ -213,7 +213,7 @@ export default function HomePage() {
   return (
     <div className="relative max-w-full mx-auto">
       {/* Top-right Login button */}
-      <div className="fixed top-3 right-3 z-50">
+      {/* <div className="fixed top-3 right-3 z-50">
         <a
           href="https://app.nirvana.bm/signin"
           className="h-[40px] inline-flex items-center px-4 bg-[#c19658] rounded-xl text-black hover:opacity-90 hover:bg-[#c19658]/90"
@@ -223,7 +223,7 @@ export default function HomePage() {
         >
           <span className="text-sm">Login</span>
         </a>
-      </div>
+      </div> */}
     {/* <div className="relative max-w-[1450px] mx-auto"> */}
       {/* Full-viewport-width ticker (ignores main padding) */}
       {/* <div className="mt-2 mb-2" style={{ width: '100vw', marginLeft: 'calc(50% - 50vw)' }}>
