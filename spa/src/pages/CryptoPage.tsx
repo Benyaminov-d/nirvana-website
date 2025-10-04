@@ -6,7 +6,7 @@ export default function CryptoPage() {
     <div className="w-full px-3 md:px-6 py-8 md:py-10">
       <div className="max-w-[980px] mx-auto flex flex-col gap-6">
         <div className="mb-2">
-          <Link to="/" className="glass nv-glass--inner-hairline border border-white/10 rounded-lg px-3 py-2 inline-flex items-center gap-2 text-gray-200 hover:text-white">
+          <Link to="/?fromsubpage=true" className="glass nv-glass--inner-hairline border border-white/10 rounded-lg px-3 py-2 inline-flex items-center gap-2 text-gray-200 hover:text-white">
             <span className="text-xl leading-none">←</span>
             <span className="trajan-text">Home</span>
           </Link>

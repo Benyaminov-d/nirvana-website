@@ -1,20 +1,40 @@
-import { Outlet, useLocation } from 'react-router-dom';
+import { Outlet, useLocation, useNavigate } from 'react-router-dom';
 import ComplianceGate from '../components/ComplianceGate';
 import CookieBanner from '../components/CookieBanner';
 import { useCompliance } from '../context/ComplianceContext';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 
 export default function RootLayout() {
   const location = useLocation();
   const isHome = location.pathname === '/';
+  const navigate = useNavigate();
   const { reset } = useCompliance();
+  const processedRef = useRef(false);
 
   // Reset compliance state when visiting home page
   useEffect(() => {
-    if (isHome) {
+    if (!isHome) {
+      processedRef.current = false;
+      return;
+    }
+
+    const fromSubpage = new URLSearchParams(location.search).get('fromsubpage') === 'true';
+
+    // If returning from a subpage, strip the flag and do not reset compliance
+    if (fromSubpage) {
+      if (!processedRef.current) {
+        processedRef.current = true;
+        navigate('/', { replace: true });
+      }
+      return;
+    }
+
+    // Fresh/normal entry to home: reset compliance so modal can show
+    if (!processedRef.current) {
+      processedRef.current = true;
       reset();
     }
-  }, [isHome, reset]);
+  }, [isHome, location.search, navigate, reset]);
 
   return (
     <div className="min-h-screen">
